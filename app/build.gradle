@@ -46,6 +46,16 @@ android {
             applicationId "acr.browser.barebones"
             versionCode project.versionCode_lite
         }
+
+        airfox {
+            applicationId "com.mgensuite.airfox.browser"
+            versionCode 10
+            versionName '1.0.0'
+
+            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
+
+            multiDexEnabled true
+        }
     }
 
     lintOptions {
@@ -54,6 +64,7 @@ android {
 
     packagingOptions {
         exclude '.readme'
+        exclude 'publicsuffixes.gz'
     }
 }
 
@@ -67,6 +78,18 @@ dexcount {
 
 dependencies {
     testCompile 'junit:junit:4.12'
+
+    // AirFox SDK
+    compile ("com.mgensuite:airfox-mobile-sdk:$airfox_lib_version") {
+        exclude group: 'com.intellij', module: 'annotations'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        transitive = true
+        changing = true
+    }
+
+    // MultiDex
+    compile 'com.android.support:multidex:1.0.2'
+    androidTestCompile 'com.android.support:multidex:1.0.2'
 
     // support libraries
     def supportLibVersion = '25.4.0'
@@ -120,3 +143,6 @@ dependencies {
     // kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
+
+apply plugin: 'com.google.gms.google-services'
+

@@ -1,0 +1,624 @@
+{
+  "Moments": [
+    {
+      "Title": "Life Post-Unlock Ads",
+      "ID": "post-unlock",
+      "frequency": 3,
+      "cache_expires_after": 86400000,
+      "network": "wifi",
+      "parameters": [
+        {
+          "name": "min_time_between_ads",
+          "value": "60"
+        },
+        {
+          "name": "max_time_between_ads",
+          "value": "600"
+        },
+        {
+          "name": "max_size_mem_cache",
+          "value": "2"
+        },
+        {
+          "name": "max_size_disc_cache",
+          "value": "10"
+        }
+      ],
+      "Networks": [
+        {
+          "sequence": "10",
+          "name": "OGURY",
+          "type": "OGURY",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial"
+            }
+          ]
+        },
+        {
+          "sequence": "1",
+          "name": "Facebook",
+          "type": "FAN",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "1576279019365139_1695312474128459"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "1576279019365139_1713552312304475"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "2",
+          "name": "Applovin",
+          "type": "APPLOVIN",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Life_interstitial_post-unlock",
+                  "value": "native"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Life_native_post-unlock",
+                  "value": "native"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "3",
+          "name": "Admob",
+          "type": "ADMOB",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "App ID",
+                  "value": "ca-app-pub-5434727245226926~8810430695"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/9784071093"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "4",
+          "name": "MarketPlace (Mopub)",
+          "type": "MOPUB",
+          "placements": [
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "mrect",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "34810e9667fe40fdb5818e3be65d55ca"
+                }
+              ]
+            },
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "8b87b00517fb43d093dfb03c1d350481"
+                }
+              ]
+            },
+            {
+              "sequence": "3",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "21a9be177ab043159831f599ae28231d"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "5",
+          "name": "Inneractive",
+          "type": "INNERACTIVE",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "AirFox_Native_Video_Android"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "mrect",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "AirFox_life_mrect_111016_Android"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "6",
+          "name": "Avocarrot",
+          "type": "AVOCARROT",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "API Key",
+                  "value": "6f80570b218e018d8da8b33b9097718b2ebd9d4e"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Adunit ID",
+                  "value": "c9ae9f62234c9c2ac3b7bb787717cd0e5b618ce0"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": false,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "API Key",
+                  "value": "6f80570b218e018d8da8b33b9097718b2ebd9d4e"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Adunit ID",
+                  "value": "4686eb8cf716fb19d22df3e38b28b0cc9994048d"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "7",
+          "name": "Pubnative",
+          "type": "PUBNATIVE",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "App Token",
+                  "value": "9b6777a9f9999efb41a1cb0d3005cfee5ef301dd35af0778ba47dd207447008f"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Zone Id",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "8",
+          "name": "Kiip",
+          "type": "KIIP",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Application Id",
+                  "value": "5adf036ecdd53c59f9c9a7ca152d3e89"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "b1353c67a1ae4a915303334dde65c1ac"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "9",
+          "name": "Airfox",
+          "type": "AIRFOX",
+          "placements": [
+            {
+              "sequence": "3",
+              "enabled": true,
+              "format": "interstitial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "Life Post-Call Ads",
+      "ID": "post-call",
+      "frequency": 1,
+      "min_time_between_ads": 10,
+      "max_time_between_ads": 600,
+      "max_size_mem_cache": 2,
+      "max_size_disc_cache": 10,
+      "cache_expires_after": 86400000,
+      "network": "wifi",
+      "parameters": [
+        {
+          "name": "accepted_call",
+          "value": "true"
+        },
+        {
+          "name": "rejected_call",
+          "value": "true"
+        },
+        {
+          "name": "min_time_between_ads",
+          "value": "10"
+        },
+        {
+          "name": "max_time_between_ads",
+          "value": "600"
+        },
+        {
+          "name": "max_size_mem_cache",
+          "value": "2"
+        },
+        {
+          "name": "max_size_disc_cache",
+          "value": "10"
+        }
+      ],
+      "Networks": [
+        {
+          "sequence": "1",
+          "name": "Facebook",
+          "type": "FAN",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "1576279019365139_1847076862285352"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "1576279019365139_1846983782294660"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "2",
+          "name": "Applovin",
+          "type": "APPLOVIN",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Life_interstitial_post-call",
+                  "value": "native"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Life_native_post-call",
+                  "value": "native"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "3",
+          "name": "Admob",
+          "type": "ADMOB",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "App ID",
+                  "value": "ca-app-pub-5434727245226926~8810430695"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/6022138299"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "4",
+          "name": "MarketPlace (Mopub)",
+          "type": "MOPUB",
+          "placements": [
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "mrect",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement ID",
+                  "value": "e7b4c92ad5cb4d18a2d82c0fd7446e77"
+                }
+              ]
+            },
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "774b242ae60049528d64f3336ef7428f"
+                }
+              ]
+            },
+            {
+              "sequence": "3",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "2cfadccfe23c4f2092151797bb583d6c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "5",
+          "name": "Inneractive",
+          "type": "INNERACTIVE",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "AirFox_Native_Video_Android"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": true,
+              "format": "mrect",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "AirFox_life_mrect_111016_Android"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "6",
+          "name": "Avocarrot",
+          "type": "AVOCARROT",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "API Key",
+                  "value": "6f80570b218e018d8da8b33b9097718b2ebd9d4e"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Adunit ID",
+                  "value": "45007e14-ba5c-4c5d-b4d1-b637ff14a3d9"
+                }
+              ]
+            },
+            {
+              "sequence": "2",
+              "enabled": false,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "API Key",
+                  "value": "6f80570b218e018d8da8b33b9097718b2ebd9d4e"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Adunit ID",
+                  "value": "525b2c16-33fe-43d5-9ee9-21d706d44d20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "7",
+          "name": "Pubnative",
+          "type": "PUBNATIVE",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "App Token",
+                  "value": "9b6777a9f9999efb41a1cb0d3005cfee5ef301dd35af0778ba47dd207447008f"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Zone Id",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "8",
+          "name": "Kiip",
+          "type": "KIIP",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Application Id",
+                  "value": "5adf036ecdd53c59f9c9a7ca152d3e89"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "b1353c67a1ae4a915303334dde65c1ac"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": "9",
+          "name": "Airfox",
+          "type": "AIRFOX",
+          "placements": [
+            {
+              "sequence": "3",
+              "enabled": true,
+              "format": "interstitial"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
