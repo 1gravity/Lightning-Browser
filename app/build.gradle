@@ -92,7 +92,7 @@ dependencies {
     androidTestCompile 'com.android.support:multidex:1.0.2'
 
     // support libraries
-    def supportLibVersion = '25.4.0'
+    def supportLibVersion = '26.0.2'
     compile "com.android.support:palette-v7:$supportLibVersion"
     compile "com.android.support:appcompat-v7:$supportLibVersion"
     compile "com.android.support:design:$supportLibVersion"
