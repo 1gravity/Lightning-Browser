@@ -14,7 +14,8 @@ public class StartupActivity extends AirFoxStartupActivity {
 
     @Override
     protected void onStartActivity() {
-        Intent intent = new Intent(this, AirFoxBrowserActivity.class);
+        Intent intent = getIntent();
+        intent.setClass(this, AirFoxBrowserActivity.class);
         startActivity(intent);
         finish();
     }
