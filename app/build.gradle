@@ -155,6 +155,9 @@ dependencies {
 
     // kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // progress indicator
+    compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 }
 
 apply plugin: 'com.google.gms.google-services'

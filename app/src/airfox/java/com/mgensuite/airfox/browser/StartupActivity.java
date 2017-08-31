@@ -5,7 +5,6 @@ import android.widget.Toast;
 
 import com.mgensuite.airfoxsdk.AirFoxStartupActivity;
 
-import acr.browser.lightning.MainActivity;
 import acr.browser.lightning.R;
 
 /**
@@ -15,7 +14,7 @@ public class StartupActivity extends AirFoxStartupActivity {
 
     @Override
     protected void onStartActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, AirFoxBrowserActivity.class);
         startActivity(intent);
         finish();
     }

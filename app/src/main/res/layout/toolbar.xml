@@ -27,6 +27,46 @@
         custom:contentInsetStart="0dp"/>
 
     <LinearLayout
+        android:id="@+id/airfox_progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="3dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/airfox_progress_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/air"/>
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:id="@+id/airfox_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            custom:rcProgress="10.0"
+            custom:rcSecondaryProgress="0.0"
+            custom:rcMax="1000.0"
+            custom:rcRadius="2dp"
+            custom:rcBackgroundPadding="0dp"
+            custom:rcReverse="false"
+            custom:rcProgressColor="#2931fd"
+            custom:rcSecondaryProgressColor="#ff0000"
+            custom:rcBackgroundColor="#BDBDBD"/>
+
+        <TextView
+            android:id="@+id/airfox_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:text="100"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/progressBackgroundColor">
