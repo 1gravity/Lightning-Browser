@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion project.targetSdkVersion
@@ -60,6 +61,18 @@ android {
 
     lintOptions {
         abortOnError true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    retrolambda {
+        javaVersion JavaVersion.VERSION_1_6
+        defaultMethods false
+        incremental true
+        jvmArgs '-noverify'
     }
 
     packagingOptions {
