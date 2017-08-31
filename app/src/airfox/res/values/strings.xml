@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">AirFox Browser</string>
+    <string name="url_twitter">twitter.com/_airfox</string>
+    <string name="action_follow_me">Contact Us</string>
 </resources>
