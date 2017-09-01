@@ -41,7 +41,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "https://maven.google.com" }
+        google()
 
         // AirFox AWS S3 repository
         maven {
@@ -74,4 +74,9 @@ ext {
     versionCode_plus = 96
 
     support_lib_version = '26.0.2'
+    dagger_lib_version = '2.11'
+    butterknifeVersion = '8.8.0'
+    mezzanineVersion = '1.0.0'
+    netcipherVersion = '2.0.0-alpha1'
+    leakCanaryVersion = '1.5.1'
 }
