@@ -117,12 +117,12 @@ dependencies {
     androidTestCompile 'com.android.support:multidex:1.0.2'
 
     // support libraries
-    def supportLibVersion = '26.0.2'
-    compile "com.android.support:palette-v7:$supportLibVersion"
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
-    compile "com.android.support:design:$supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
-    compile "com.android.support:support-v4:$supportLibVersion"
+    compile "com.android.support:support-v4:$support_lib_version"
+    compile "com.android.support:palette-v7:$support_lib_version"
+    compile "com.android.support:appcompat-v7:$support_lib_version"
+    compile "com.android.support:design:$support_lib_version"
+    compile "com.android.support:recyclerview-v7:$support_lib_version"
+    compile "com.android.support:support-v4:$support_lib_version"
 
     // html parsing for reading mode
     compile 'org.jsoup:jsoup:1.10.2'
@@ -173,4 +173,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-
