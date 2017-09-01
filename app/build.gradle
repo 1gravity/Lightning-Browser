@@ -101,7 +101,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     // AirFox SDK
-    compile ("com.mgensuite:airfox-mobile-sdk:$airfox_lib_version") {
+    debugCompile (project(path: ':library-airfox', configuration: "debug")) {
+        exclude group: 'com.intellij', module: 'annotations'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+    releaseCompile ("com.mgensuite:airfox-mobile-sdk:$airfox_lib_version") {
         exclude group: 'com.intellij', module: 'annotations'
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
         transitive = true
