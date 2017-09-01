@@ -33,7 +33,8 @@
 
         <activity
             android:name="com.mgensuite.airfox.browser.StartupActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:node="replace">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
