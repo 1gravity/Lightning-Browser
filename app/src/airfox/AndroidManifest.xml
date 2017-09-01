@@ -26,24 +26,29 @@
 
     <application
         android:name="com.mgensuite.airfox.browser.Application"
-        tools:replace="android:name">
+        android:theme="@style/AppTheme"
+        tools:replace="android:name, android:theme">
 
         <meta-data android:name="onboarding_enabled" android:value="false" />
 
         <activity
             android:name="com.mgensuite.airfox.browser.StartupActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.APP_BROWSER"/>
             </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
                 <data android:scheme="file"/>
@@ -117,6 +122,11 @@
             android:launchMode="singleTask"
             android:theme="@style/Theme.LightTheme"
             android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name="com.mgensuite.airfoxsdk.AirFoxMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".MainActivity"

@@ -3,7 +3,6 @@ package com.mgensuite.airfox.browser;
 import com.mgensuite.ads.AdModule;
 import com.mgensuite.ads.AdModuleBuilder;
 import com.mgensuite.ads.AdMoment;
-import com.mgensuite.airfoxsdk.AirFox;
 import com.mgensuite.airfoxsdk.AirFoxBuilder;
 import com.mgensuite.sdk.core.api.AirFoxMobileSdk;
 import com.mgensuite.sdk.core.util.Logger;
@@ -29,25 +28,22 @@ public class Application extends BrowserApp {
             AirFoxBuilder afBuilder = new AirFoxBuilder(CUSTOMER_UUID);
 
             afBuilder
-                    .setOfferWallEnabled(false)
-                    .setEarnTabEnabled(false)
+                    .setOfferWallEnabled(true)
+                    .setAllowRecharge(true)
+                    .setEarnTabEnabled(true)
+                    .setPurchaseTabEnabled(true)
+                    .setRedeemTabEnabled(true)
+                    .setActivityMenuItemEnabled(true)
+                    .setLoanTabEnabled(false)
                     .setAccountTabEnabled(false)
                     .setManageTabEnabled(false)
-                    .setRedeemTabEnabled(false)
-                    .setAllowRecharge(false)
                     .setDataEnabled(false)
                     .setWifiDataEnabled(false)
                     .setDataNotificationsEnabled(false)
                     .setMomentsEnabled(true)
                     .setLocalWaterfall(true);
 
-            AirFox airFox = afBuilder.build(this, false, true, null);
-            if (airFox != null) {
-                airFox.enableLockscreen(false);
-                airFox.enableAdWall(false);
-                airFox.enablePostUnlockAds(false);
-                airFox.enablePostCallAds(false);
-            }
+            afBuilder.build(this, false, true, null);
 
             AdModuleBuilder amBuilder = new AdModuleBuilder(this, APP_UUID);
             sAdModule = amBuilder.build(BROWSER.name());

@@ -74,7 +74,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.anthonycr.bonsai.Completable;
@@ -83,6 +82,7 @@ import com.anthonycr.bonsai.Schedulers;
 import com.anthonycr.bonsai.SingleOnSubscribe;
 import com.anthonycr.grant.PermissionsManager;
 import com.anthonycr.progress.AnimatedProgressBar;
+import com.mgensuite.airfoxsdk.AirFoxMainActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -380,6 +380,11 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         // create the search EditText in the ToolBar
         mSearch = customView.findViewById(R.id.search);
         mSearchBackground = customView.findViewById(R.id.search_container);
+
+        customView.findViewById(R.id.air_button).setOnClickListener(view -> {
+            Intent intent = new Intent(BrowserActivity.this, AirFoxMainActivity.class);
+            startActivity(intent);
+        });
 
         // initialize search background color
         mSearchBackground.getBackground().setColorFilter(getSearchBarColor(primaryColor, primaryColor), PorterDuff.Mode.SRC_IN);

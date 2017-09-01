@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#C62828</color>
+    <color name="nav_item_text_color">#FFFFFF</color>
+    <color name="nav_divider_color">#D8000000</color>
+    <color name="light_gray">#d3d3d3</color>
+    <color name="progress_color">#7294BA</color>
+    <color name="progress_sm_color">#2EADA7</color>
+    <color name="usage_bg_color">#EFEFEF</color>
+    <color name="airfox_bg_color">#448AFF</color>
+    <color name="edit_text_bgcolor">#3F51B5</color>
+</resources>

@@ -53,9 +53,13 @@ android {
             versionCode 10
             versionName '1.0.0'
 
+            multiDexEnabled true
+
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
 
-            multiDexEnabled true
+            resValue "string", "contact_telegram", "http://t.me/airfoxico"
+            resValue "string", "contact_email_address", "care@airfox.io"
+            resValue "string", "contact_faq_address", "http://www.airtoken.com"
         }
     }
 
@@ -66,6 +70,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
     }
 
     retrolambda {
