@@ -39,6 +39,7 @@ allprojects {
     ext.airfox_lib_version = '3.7.0-SNAPSHOT'
 
     ext.minSdkVersion = 16
+    ext.compileSdkVersion = 26
     ext.targetSdkVersion = 26
     ext.buildToolsVersion = '26.0.1'
 
