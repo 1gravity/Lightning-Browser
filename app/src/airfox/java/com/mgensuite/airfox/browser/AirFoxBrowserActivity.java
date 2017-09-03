@@ -47,42 +47,24 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
     private Double mBalanceAmount;
     private Double mMinimumRecharge;
 
-    private TrackingObserver<Resource<Wallet>> mWalletObserver = new TrackingObserver<Resource<Wallet>>() {
-        @Override
-        public void onChanged(@Nullable final Resource<Wallet> resource) {
-            switch (resource.getStatus()) {
-                case SUCCESS:
-                    MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
-                    setHasChanged();
-                    break;
-                case ERROR:
-                    String errorMsg = getString(com.mgensuite.airfoxsdk.R.string.airfox_account_request_failed);
-                    //showErrorMessage(errorMsg);
-                    break;
-                case LOGGED_OUT:
-                    //AirFoxModule.logout();
-                    break;
-            }
-        }
-    };
-
+    private TrackingObserver<Resource<Wallet>> mWalletObserver =
+            new TrackingObserver<Resource<Wallet>>() {
+                @Override
+                public void onChanged(@Nullable final Resource<Wallet> resource) {
+                    if (resource.getStatus() == Resource.Status.SUCCESS) {
+                        MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
+                        setHasChanged();
+                    }
+                }
+            };
 
     private TrackingObserver<Resource<TopupInfo>> mTopupObserver =
             new TrackingObserver<Resource<TopupInfo>>() {
                 @Override
                 public void onChanged(@Nullable Resource<TopupInfo> resource) {
-                    switch (resource.getStatus()) {
-                        case SUCCESS:
-                            MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
-                            setHasChanged();
-                            break;
-                        case ERROR:
-                            String errorMsg = getString(com.mgensuite.airfoxsdk.R.string.topup_info_request_failed);
-//                            showErrorMessage(errorMsg);
-                            break;
-                        case LOGGED_OUT:
-//                            AirFoxModule.logout();
-                            break;
+                    if (resource.getStatus() == Resource.Status.SUCCESS) {
+                        MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
+                        setHasChanged();
                     }
                 }
             };
@@ -114,7 +96,9 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
                 && maximum != null) {
             // progress bar
             mProgressBar.setMax(maximum.floatValue());
-            mProgressBar.setProgress(balance.floatValue());
+            ProgressBarAnimation anim = new ProgressBarAnimation(mProgressBar, 0f, balance.floatValue());
+            anim.setDuration(1000);
+            mProgressBar.startAnimation(anim);
 
             // balance text
             String currency = mBalance != null ? mBalance.getCurrencyShort() : "";
