@@ -9,15 +9,20 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.mgensuite.airfoxsdk.AirFoxModule;
 import com.mgensuite.datalayer.TrackingObserver;
+import com.mgensuite.datalayer.model.topup.TopupInfo;
+import com.mgensuite.datalayer.model.topup.TopupInfoData;
 import com.mgensuite.datalayer.model.wallet.Balance;
 import com.mgensuite.datalayer.model.wallet.Wallet;
 import com.mgensuite.datalayer.viewmodel.Resource;
+import com.mgensuite.datalayer.viewmodel.TopupViewModel;
 import com.mgensuite.datalayer.viewmodel.WalletViewModel;
 import com.mgensuite.datalayer.wallet.WalletHelper;
 import com.mgensuite.datalayer.wallet.WalletProvider;
 import com.mgensuite.sdk.core.util.Logger;
 import com.mgensuite.sdk.core.util.MainThreadUtil;
+import com.mgensuite.sdk.core.util.PreferenceUtil;
 
 import acr.browser.lightning.MainActivity;
 import acr.browser.lightning.R;
@@ -38,10 +43,11 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
      */
     private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
 
-    private WalletViewModel mModel;
     private Balance mBalance;
+    private Double mBalanceAmount;
+    private Double mMinimumRecharge;
 
-    private TrackingObserver<Resource<Wallet>> mObserver = new TrackingObserver<Resource<Wallet>>() {
+    private TrackingObserver<Resource<Wallet>> mWalletObserver = new TrackingObserver<Resource<Wallet>>() {
         @Override
         public void onChanged(@Nullable final Resource<Wallet> resource) {
             switch (resource.getStatus()) {
@@ -60,53 +66,63 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
         }
     };
 
+
+    private TrackingObserver<Resource<TopupInfo>> mTopupObserver =
+            new TrackingObserver<Resource<TopupInfo>>() {
+                @Override
+                public void onChanged(@Nullable Resource<TopupInfo> resource) {
+                    switch (resource.getStatus()) {
+                        case SUCCESS:
+                            MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
+                            setHasChanged();
+                            break;
+                        case ERROR:
+                            String errorMsg = getString(com.mgensuite.airfoxsdk.R.string.topup_info_request_failed);
+//                            showErrorMessage(errorMsg);
+                            break;
+                        case LOGGED_OUT:
+//                            AirFoxModule.logout();
+                            break;
+                    }
+                }
+            };
+
     @BindView(R.id.airfox_progress_bar) RoundCornerProgressBar mProgressBar;
     @BindView(R.id.airfox_progress_text) TextView mProgressText;
 
     public AirFoxBrowserActivity() {}
 
     private void updateTokenBalance(Wallet wallet) {
-        if (mProgressText != null && wallet != null && wallet.getBalance() != null) {
+        if (wallet != null && wallet.getBalance() != null &&
+                wallet.getBalance().getSubscriber() != null) {
             mBalance = wallet.getBalance();
+            mBalanceAmount = mBalance.getSubscriber();
+            updateBalance(mBalanceAmount, mMinimumRecharge);
+        }
+    }
+
+    private void updateTokenBalance(TopupInfo topupInfo) {
+        if (topupInfo != null && topupInfo.getData() != null) {
+            TopupInfoData data = topupInfo.getData();
+            mMinimumRecharge = data.getOpenRangeMinimumAmountAirfoxCurrency().doubleValue();
+            updateBalance(mBalanceAmount, mMinimumRecharge);
+        }
+    }
+
+    private void updateBalance(Double balance, Double maximum) {
+        if (mProgressText != null && mProgressBar != null && mBalance != null && balance != null
+                && maximum != null) {
+            // progress bar
+            mProgressBar.setMax(maximum.floatValue());
+            mProgressBar.setProgress(balance.floatValue());
+
+            // balance text
             String currency = mBalance != null ? mBalance.getCurrencyShort() : "";
-            if (wallet.getBalance().getSubscriber() != null) {
-                Double balance = wallet.getBalance().getSubscriber();
-
-                float progress = balance == null ? 0f : balance.floatValue();
-                mProgressBar.setProgress(progress);
-
-                String amount = TOKEN_CURRENCY.equals(currency) ?
-                        WalletHelper.formatAmountLocale(balance, null) :
-                        WalletHelper.formatAmountLocaleTwoDigits(balance,null);
-                mProgressText.setText(amount);
-            }
+            String amount = TOKEN_CURRENCY.equals(currency) ?
+                    WalletHelper.formatAmountLocale(balance, null) :
+                    WalletHelper.formatAmountLocaleTwoDigits(balance,null);
+            mProgressText.setText(amount);
         }
-    }
-
-    public Double getBalance(WalletProvider.Type type) {
-        if (mBalance != null) {
-            return getBalance(mBalance, type);
-        }
-
-        try {
-            Balance balance = mModel.getWallet().getValue().getData().getBalance();
-            return getBalance(balance, type);
-        } catch (Exception e) {
-            Logger.e(Logger.LOG_TAG, "Can't retrieve balance", e);
-        }
-        return null;
-    }
-
-    private Double getBalance(Balance balance, WalletProvider.Type type) {
-        switch (type) {
-            case EARNED:
-                return balance.getEarned();
-            case CARRIER:
-                return balance.getCarrier();
-            case SUBSCRIBER:
-                return balance.getSubscriber();
-        }
-        return null;
     }
 
     @Override
@@ -126,8 +142,12 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
         super.onStart();
         mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
 
-        mModel = ViewModelProviders.of(this).get(WalletViewModel.class);
-        mModel.getWallet().observe(this, mObserver);
+        WalletViewModel walletViewModel = ViewModelProviders.of(this).get(WalletViewModel.class);
+        walletViewModel.getWallet().observe(this, mWalletObserver);
+
+        TopupViewModel topupViewModel = ViewModelProviders.of(this).get(TopupViewModel.class);
+        String phoneNumber = AirFoxBrowser.getPhoneNumber();
+        topupViewModel.getTopupInfo(phoneNumber).observe(this, mTopupObserver);
     }
 
     @Override

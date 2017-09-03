@@ -25,7 +25,7 @@
         android:required="false"/>
 
     <application
-        android:name="com.mgensuite.airfox.browser.Application"
+        android:name="com.mgensuite.airfox.browser.AirFoxBrowser"
         android:theme="@style/AppTheme"
         tools:replace="android:name, android:theme">
 

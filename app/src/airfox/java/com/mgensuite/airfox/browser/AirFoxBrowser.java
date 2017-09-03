@@ -10,13 +10,15 @@ import com.mgensuite.sdk.core.util.Logger;
 import acr.browser.lightning.BrowserApp;
 import acr.browser.lightning.BuildConfig;
 
-public class Application extends BrowserApp {
+public class AirFoxBrowser extends BrowserApp {
 
     private static AdModule sAdModule;
 
     private static final String CUSTOMER_UUID = "596e1de7ac";
     private static final String APP_UUID = CUSTOMER_UUID + "_4";
     private static final AdMoment BROWSER = new AdMoment("browser");
+
+    private static AirFoxBuilder sAirFoxBuilder;
 
     @Override
     public void onCreate() {
@@ -25,9 +27,9 @@ public class Application extends BrowserApp {
         if (AirFoxMobileSdk.isInitialized()) {
             Logger.enableDebugLogging(BuildConfig.DEBUG);
 
-            AirFoxBuilder afBuilder = new AirFoxBuilder(CUSTOMER_UUID);
+            sAirFoxBuilder = new AirFoxBuilder(CUSTOMER_UUID);
 
-            afBuilder
+            sAirFoxBuilder
                     .setOfferWallEnabled(true)
                     .setAllowRecharge(true)
                     .setEarnTabEnabled(true)
@@ -43,7 +45,7 @@ public class Application extends BrowserApp {
                     .setMomentsEnabled(true)
                     .setLocalWaterfall(true);
 
-            afBuilder.build(this, false, true, null);
+            sAirFoxBuilder.build(this, false, true, null);
 
             AdModuleBuilder amBuilder = new AdModuleBuilder(this, APP_UUID);
             sAdModule = amBuilder.build(BROWSER.name());
@@ -51,6 +53,10 @@ public class Application extends BrowserApp {
                 sAdModule.enable(true);
             }
         }
+    }
+
+    public static String getPhoneNumber() {
+        return sAirFoxBuilder.getMDN();
     }
 
 }
