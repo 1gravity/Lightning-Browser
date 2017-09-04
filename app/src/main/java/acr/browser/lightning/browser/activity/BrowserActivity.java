@@ -381,11 +381,6 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         mSearch = customView.findViewById(R.id.search);
         mSearchBackground = customView.findViewById(R.id.search_container);
 
-        customView.findViewById(R.id.air_button).setOnClickListener(view -> {
-            Intent intent = new Intent(BrowserActivity.this, AirFoxMainActivity.class);
-            startActivity(intent);
-        });
-
         // initialize search background color
         mSearchBackground.getBackground().setColorFilter(getSearchBarColor(primaryColor, primaryColor), PorterDuff.Mode.SRC_IN);
         mSearch.setHintTextColor(ThemeUtils.getThemedTextHintColor(mDarkTheme));

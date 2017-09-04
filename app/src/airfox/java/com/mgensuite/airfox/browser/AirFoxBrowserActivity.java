@@ -4,11 +4,17 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.mgensuite.airfoxsdk.AirFoxMainActivity;
 import com.mgensuite.airfoxsdk.AirFoxModule;
 import com.mgensuite.datalayer.TrackingObserver;
 import com.mgensuite.datalayer.model.topup.TopupInfo;
@@ -26,6 +32,7 @@ import com.mgensuite.sdk.core.util.PreferenceUtil;
 
 import acr.browser.lightning.MainActivity;
 import acr.browser.lightning.R;
+import acr.browser.lightning.browser.activity.BrowserActivity;
 import butterknife.BindView;
 
 /**
@@ -117,7 +124,6 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
     }
 
@@ -132,6 +138,13 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
         TopupViewModel topupViewModel = ViewModelProviders.of(this).get(TopupViewModel.class);
         String phoneNumber = AirFoxBrowser.getPhoneNumber();
         topupViewModel.getTopupInfo(phoneNumber).observe(this, mTopupObserver);
+
+        ActionBar actionBar = getSupportActionBar();
+        View airFoxButton = actionBar.getCustomView().findViewById(R.id.air_button);
+        if (airFoxButton != null) airFoxButton.setOnClickListener(view -> {
+            Intent intent = new Intent(AirFoxBrowserActivity.this, AirFoxMainActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
