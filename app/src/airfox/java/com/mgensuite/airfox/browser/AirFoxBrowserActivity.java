@@ -110,8 +110,8 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
             // balance text
             String currency = mBalance != null ? mBalance.getCurrencyShort() : "";
             String amount = TOKEN_CURRENCY.equals(currency) ?
-                    WalletHelper.formatAmountLocale(balance, null) :
-                    WalletHelper.formatAmountLocaleTwoDigits(balance,null);
+                    WalletHelper.formatAmountLocale(maximum, null) :
+                    WalletHelper.formatAmountLocaleTwoDigits(maximum,null);
             mProgressText.setText(amount);
         }
     }
