@@ -22,6 +22,25 @@
 
     </FrameLayout>
 
-    <include layout="@layout/search" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <include layout="@layout/search" />
+
+        <ImageView
+            android:id="@+id/airfox_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/airfox_button"/>
+
+    </LinearLayout>
 
 </LinearLayout>

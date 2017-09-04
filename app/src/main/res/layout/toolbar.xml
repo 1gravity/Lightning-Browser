@@ -49,7 +49,7 @@
             android:id="@+id/airfox_progress_bar"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:layout_height="20dp"
+            android:layout_height="18dp"
             android:padding="3dp"
             custom:rcProgress="10.0"
             custom:rcSecondaryProgress="0.0"

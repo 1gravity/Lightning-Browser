@@ -140,7 +140,7 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
         topupViewModel.getTopupInfo(phoneNumber).observe(this, mTopupObserver);
 
         ActionBar actionBar = getSupportActionBar();
-        View airFoxButton = actionBar.getCustomView().findViewById(R.id.air_button);
+        View airFoxButton = actionBar.getCustomView().findViewById(R.id.airfox_button);
         if (airFoxButton != null) airFoxButton.setOnClickListener(view -> {
             Intent intent = new Intent(AirFoxBrowserActivity.this, AirFoxMainActivity.class);
             startActivity(intent);
