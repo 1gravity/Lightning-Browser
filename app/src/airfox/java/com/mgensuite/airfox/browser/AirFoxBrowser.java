@@ -5,6 +5,7 @@ import com.mgensuite.ads.AdModuleBuilder;
 import com.mgensuite.ads.AdMoment;
 import com.mgensuite.airfoxsdk.AirFoxBuilder;
 import com.mgensuite.sdk.core.api.AirFoxMobileSdk;
+import com.mgensuite.sdk.core.api.Environment;
 import com.mgensuite.sdk.core.util.Logger;
 
 import acr.browser.lightning.BrowserApp;
@@ -28,6 +29,10 @@ public class AirFoxBrowser extends BrowserApp {
             Logger.enableDebugLogging(BuildConfig.DEBUG);
 
             sAirFoxBuilder = new AirFoxBuilder(CUSTOMER_UUID);
+
+            AirFoxMobileSdk.setEnvironment(BuildConfig.DEBUG ?
+                    Environment.STAGING :
+                    Environment.PRODUCTION);
 
             sAirFoxBuilder
                     .setOfferWallEnabled(true)
