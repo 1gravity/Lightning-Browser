@@ -43,7 +43,7 @@
             android:id="@+id/airfox_progress_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/air"/>
+            android:src="@drawable/token_airfox"/>
 
         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:id="@+id/airfox_progress_bar"
