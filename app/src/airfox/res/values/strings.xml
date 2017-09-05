@@ -4,6 +4,7 @@
     <string name="url_twitter">twitter.com/_airfox</string>
     <string name="action_follow_me">Contact Us</string>
 
+    <string name="ad_offer_value">~100-400 AIR / day</string>
     <string name="ad_offer_enable_title">Opt-In to Ads and Earn daily!</string>
     <string name="ad_offer_enable_msg">Do you want to earn AirTokens daily enabling Ads on your device? You will be paid out daily. You can always disable ads in your Ad Control settings.</string>
     <string name="ad_offer_disable_msg">If you disable ads you won\'t be rewarded any longer.\nAre you sure you want to disable ads?</string>
