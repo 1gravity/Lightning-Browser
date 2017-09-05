@@ -14,11 +14,10 @@ android {
         targetSdkVersion project.targetSdkVersion
         versionName project.versionName
         vectorDrawables.useSupportLibrary = true
-    }
 
-    sourceSets {
-        lightningPlus.setRoot('src/LightningPlus')
-        lightningLite.setRoot('src/LightningLite')
+        buildConfigField ("String", "DEFAULT_SEARCH_ENGINE", "\"https://www.bing.com/search?q=\"")
+        // see acr.browser.lightning.search.SearchEngineProvider
+        buildConfigField ("int", "DEFAULT_SEARCH_ENGINE_INDEX", "1")
     }
 
     buildTypes {
@@ -60,6 +59,10 @@ android {
             resValue "string", "contact_telegram", "http://t.me/airfoxico"
             resValue "string", "contact_email_address", "care@airfox.io"
             resValue "string", "contact_faq_address", "http://www.airtoken.com"
+
+            buildConfigField ("String", "DEFAULT_SEARCH_ENGINE", "\"https://www.bing.com/search?q=\"")
+            // see acr.browser.lightning.search.SearchEngineProvider
+            buildConfigField ("int", "DEFAULT_SEARCH_ENGINE_INDEX", "3")
         }
     }
 

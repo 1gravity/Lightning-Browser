@@ -125,12 +125,6 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
 
         WalletViewModel walletViewModel = ViewModelProviders.of(this).get(WalletViewModel.class);
         walletViewModel.getWallet().observe(this, mWalletObserver);
@@ -145,6 +139,12 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
             Intent intent = new Intent(AirFoxBrowserActivity.this, AirFoxMainActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
     }
 
     @Override
