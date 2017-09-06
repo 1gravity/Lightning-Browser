@@ -9,13 +9,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.mgensuite.airfoxsdk.AirFoxMainActivity;
-import com.mgensuite.airfoxsdk.AirFoxModule;
 import com.mgensuite.datalayer.TrackingObserver;
 import com.mgensuite.datalayer.model.topup.TopupInfo;
 import com.mgensuite.datalayer.model.topup.TopupInfoData;
@@ -25,14 +22,10 @@ import com.mgensuite.datalayer.viewmodel.Resource;
 import com.mgensuite.datalayer.viewmodel.TopupViewModel;
 import com.mgensuite.datalayer.viewmodel.WalletViewModel;
 import com.mgensuite.datalayer.wallet.WalletHelper;
-import com.mgensuite.datalayer.wallet.WalletProvider;
-import com.mgensuite.sdk.core.util.Logger;
 import com.mgensuite.sdk.core.util.MainThreadUtil;
-import com.mgensuite.sdk.core.util.PreferenceUtil;
 
 import acr.browser.lightning.MainActivity;
 import acr.browser.lightning.R;
-import acr.browser.lightning.browser.activity.BrowserActivity;
 import butterknife.BindView;
 
 /**
@@ -103,8 +96,9 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
                 && maximum != null) {
             // progress bar
             mProgressBar.setMax(maximum.floatValue());
-            ProgressBarAnimation anim = new ProgressBarAnimation(mProgressBar, 0f, balance.floatValue());
-            anim.setDuration(1000);
+            float maxValue = (float) Math.min(balance, maximum);
+            ProgressBarAnimation anim = new ProgressBarAnimation(mProgressBar, 0f, maxValue);
+            anim.setDuration(2000);
             mProgressBar.startAnimation(anim);
 
             // balance text

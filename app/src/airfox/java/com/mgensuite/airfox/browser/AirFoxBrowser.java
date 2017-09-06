@@ -41,7 +41,7 @@ public class AirFoxBrowser extends BrowserApp {
                     .setPurchaseTabEnabled(true)
                     .setRedeemTabEnabled(true)
                     .setActivityMenuItemEnabled(true)
-                    .setLoanTabEnabled(false)
+                    .setLoanTabEnabled(true)
                     .setAccountTabEnabled(false)
                     .setManageTabEnabled(false)
                     .setDataEnabled(false)
