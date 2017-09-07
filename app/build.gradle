@@ -18,6 +18,24 @@ android {
         buildConfigField ("String", "DEFAULT_SEARCH_ENGINE", "\"https://www.bing.com/search?q=\"")
         // see acr.browser.lightning.search.SearchEngineProvider
         buildConfigField ("int", "DEFAULT_SEARCH_ENGINE_INDEX", "1")
+
+        // put the variant name and the version number into the generated apk
+        android.applicationVariants.all { variant ->
+            def appName
+            //Check if an applicationName property is supplied; if not use the name of the parent project.
+            if (project.hasProperty("applicationName")) {
+                appName = ext.applicationName
+            } else {
+                appName = parent.name
+            }
+
+            variant.outputs.each { output ->
+                def newApkName
+                //If there's no ZipAlign task it means that our artifact will be unaligned and we need to mark it as such.
+                newApkName = "${appName}-${output.baseName}-${variant.versionName}.apk"
+                output.outputFile = new File(output.outputFile.parent, newApkName)
+            }
+        }
     }
 
     buildTypes {
