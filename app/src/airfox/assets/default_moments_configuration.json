@@ -140,7 +140,7 @@
     {
       "Title": "AirFox Browser",
       "ID": "browser",
-      "frequency": 8,
+      "frequency": 10,
       "cache_expires_after": 86400000,
       "network": "both",
       "parameters": [
@@ -162,6 +162,18 @@
         }
       ],
       "Networks": [
+        {
+          "sequence": "0",
+          "name": "Airfox",
+          "type": "AIRFOX",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial"
+            }
+          ]
+        },
         {
           "sequence": 1,
           "name": "Facebook",

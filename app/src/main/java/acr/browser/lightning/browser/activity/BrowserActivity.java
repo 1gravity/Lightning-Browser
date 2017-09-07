@@ -82,7 +82,6 @@ import com.anthonycr.bonsai.Schedulers;
 import com.anthonycr.bonsai.SingleOnSubscribe;
 import com.anthonycr.grant.PermissionsManager;
 import com.anthonycr.progress.AnimatedProgressBar;
-import com.mgensuite.airfoxsdk.AirFoxMainActivity;
 
 import java.io.File;
 import java.io.IOException;

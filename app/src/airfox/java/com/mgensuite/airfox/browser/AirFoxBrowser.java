@@ -1,8 +1,6 @@
 package com.mgensuite.airfox.browser;
 
-import com.mgensuite.ads.AdModule;
-import com.mgensuite.ads.AdModuleBuilder;
-import com.mgensuite.ads.AdMoment;
+import com.mgensuite.airfoxsdk.AirFox;
 import com.mgensuite.airfoxsdk.AirFoxBuilder;
 import com.mgensuite.sdk.core.api.AirFoxMobileSdk;
 import com.mgensuite.sdk.core.api.Environment;
@@ -13,12 +11,7 @@ import acr.browser.lightning.BuildConfig;
 
 public class AirFoxBrowser extends BrowserApp {
 
-    private static AdModule sAdModule;
-
     private static final String CUSTOMER_UUID = "596e1de7ac";
-    private static final String APP_UUID = CUSTOMER_UUID + "_4";
-    private static final AdMoment BROWSER = new AdMoment("browser");
-
     private static AirFoxBuilder sAirFoxBuilder;
 
     @Override
@@ -28,11 +21,11 @@ public class AirFoxBrowser extends BrowserApp {
         if (AirFoxMobileSdk.isInitialized()) {
             Logger.enableDebugLogging(BuildConfig.DEBUG);
 
-            sAirFoxBuilder = new AirFoxBuilder(CUSTOMER_UUID);
-
             AirFoxMobileSdk.setEnvironment(BuildConfig.DEBUG ?
                     Environment.STAGING :
                     Environment.PRODUCTION);
+
+            sAirFoxBuilder = new AirFoxBuilder(CUSTOMER_UUID);
 
             sAirFoxBuilder
                     .setOfferWallEnabled(true)
@@ -50,13 +43,8 @@ public class AirFoxBrowser extends BrowserApp {
                     .setMomentsEnabled(true)
                     .setLocalWaterfall(true);
 
-            sAirFoxBuilder.build(this, false, true, null);
-
-            AdModuleBuilder amBuilder = new AdModuleBuilder(this, APP_UUID);
-            sAdModule = amBuilder.build(BROWSER.name());
-            if (sAdModule != null) {
-                sAdModule.enable(true);
-            }
+            AirFox airfox = sAirFoxBuilder.build(this, false, true, null);
+            BrowserMoment.initialize(airfox);
         }
     }
 

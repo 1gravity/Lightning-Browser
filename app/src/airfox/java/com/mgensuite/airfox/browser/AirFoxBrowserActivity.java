@@ -22,6 +22,7 @@ import com.mgensuite.datalayer.viewmodel.Resource;
 import com.mgensuite.datalayer.viewmodel.TopupViewModel;
 import com.mgensuite.datalayer.viewmodel.WalletViewModel;
 import com.mgensuite.datalayer.wallet.WalletHelper;
+import com.mgensuite.sdk.core.util.Logger;
 import com.mgensuite.sdk.core.util.MainThreadUtil;
 
 import acr.browser.lightning.MainActivity;
@@ -46,6 +47,8 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
     private Balance mBalance;
     private Double mBalanceAmount;
     private Double mMinimumRecharge;
+
+    private boolean mLoading;
 
     private TrackingObserver<Resource<Wallet>> mWalletObserver =
             new TrackingObserver<Resource<Wallet>>() {
@@ -133,6 +136,22 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
             Intent intent = new Intent(AirFoxBrowserActivity.this, AirFoxMainActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void updateProgress(int n) {
+        super.updateProgress(n);
+
+        if (! mLoading && n > 0 && n < 100) {
+            // start loading a page
+            Logger.i(Logger.LOG_TAG, "Start loading page");
+            mLoading = true;
+        } else if (mLoading && n == 100) {
+            // we're done loading -> let's show an ad
+            Logger.i(Logger.LOG_TAG, "Finished loading page");
+            BrowserMoment.showAd(this);
+            mLoading = false;
+        }
     }
 
     @Override
