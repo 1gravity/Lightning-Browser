@@ -12,7 +12,4 @@
 
     <dimen name="bookmark_item_icon_size">24dp</dimen>
 
-    <dimen name="drawer_icon_size">16dp</dimen>
-    <item name="drawer_icon_size_float" format="float" type="dimen">16.0</item>
-
 </resources>
