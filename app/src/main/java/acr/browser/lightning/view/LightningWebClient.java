@@ -32,6 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.anthonycr.mezzanine.MezzanineGenerator;
+import com.mgensuite.sdk.core.util.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -74,6 +75,9 @@ public class LightningWebClient extends WebViewClient {
 
     @NonNull private final TextReflow mTextReflowJs;
     @NonNull private final InvertPage mInvertPageJs;
+
+    private String mCurrentUrl;
+    private boolean mPageLoading;
 
     LightningWebClient(@NonNull Activity activity, @NonNull LightningView lightningView) {
         BrowserApp.getAppComponent().inject(this);
@@ -119,12 +123,30 @@ public class LightningWebClient extends WebViewClient {
             ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
             return new WebResourceResponse("text/plain", "utf-8", EMPTY);
         }
-        return null;
+        return super.shouldInterceptRequest(view, url);
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        mCurrentUrl = url;
+        mPageLoading = true;
+
+        mLightningView.getTitleInfo().setFavicon(null);
+        if (mLightningView.isShown()) {
+            mUIController.updateUrl(url, true);
+            mUIController.showActionBar();
+        }
+        mUIController.tabChanged(mLightningView);
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onPageFinished(@NonNull WebView view, String url) {
+        if (mPageLoading && isCurrentUrl(url)) {
+            mPageLoading = false;
+            mUIController.onPageLoaded(url);
+        }
+
         if (view.isShown()) {
             mUIController.updateUrl(url, false);
             mUIController.setBackButtonEnabled(view.canGoBack());
@@ -142,14 +164,8 @@ public class LightningWebClient extends WebViewClient {
         mUIController.tabChanged(mLightningView);
     }
 
-    @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        mLightningView.getTitleInfo().setFavicon(null);
-        if (mLightningView.isShown()) {
-            mUIController.updateUrl(url, true);
-            mUIController.showActionBar();
-        }
-        mUIController.tabChanged(mLightningView);
+    private boolean isCurrentUrl(String url){
+        return mCurrentUrl != null && url.toLowerCase().contains(mCurrentUrl.toLowerCase());
     }
 
     @Override
@@ -320,6 +336,7 @@ public class LightningWebClient extends WebViewClient {
         // Check if configured proxy is available
         if (!mProxyUtils.isProxyReady(mActivity)) {
             // User has been notified
+            mPageLoading = false;
             return true;
         }
 
@@ -336,6 +353,7 @@ public class LightningWebClient extends WebViewClient {
 
         if (isMailOrIntent(url, view) || mIntentUtils.startActivityForUrl(view, url)) {
             // If it was a mailto: link, or an intent, or could be launched elsewhere, do that
+            mPageLoading = false;
             return true;
         }
 

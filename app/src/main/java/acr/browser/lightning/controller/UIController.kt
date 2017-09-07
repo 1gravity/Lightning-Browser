@@ -31,6 +31,8 @@ interface UIController {
 
     fun updateProgress(n: Int)
 
+    fun onPageLoaded(url: String)
+
     fun updateHistory(title: String?, url: String)
 
     fun openFileChooser(uploadMsg: ValueCallback<Uri>)

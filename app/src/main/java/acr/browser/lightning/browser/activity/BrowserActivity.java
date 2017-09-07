@@ -83,6 +83,8 @@ import com.anthonycr.bonsai.SingleOnSubscribe;
 import com.anthonycr.grant.PermissionsManager;
 import com.anthonycr.progress.AnimatedProgressBar;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -1546,6 +1548,11 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
     public void updateProgress(int n) {
         setIsLoading(n < 100);
         mProgressBar.setProgress(n);
+    }
+
+    @Override
+    public void onPageLoaded(@NotNull String url) {
+        // nop
     }
 
     protected void addItemToHistory(@Nullable final String title, @NonNull final String url) {

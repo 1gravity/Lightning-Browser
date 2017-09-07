@@ -52,6 +52,9 @@ android {
             versionCode 10
             versionName '1.0.0'
 
+            // because of draw over other apps permission
+            targetSdkVersion 22
+
             multiDexEnabled true
 
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"

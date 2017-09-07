@@ -25,6 +25,8 @@ import com.mgensuite.datalayer.wallet.WalletHelper;
 import com.mgensuite.sdk.core.util.Logger;
 import com.mgensuite.sdk.core.util.MainThreadUtil;
 
+import org.jetbrains.annotations.NotNull;
+
 import acr.browser.lightning.MainActivity;
 import acr.browser.lightning.R;
 import butterknife.BindView;
@@ -139,19 +141,10 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
     }
 
     @Override
-    public void updateProgress(int n) {
-        super.updateProgress(n);
-
-        if (! mLoading && n > 0 && n < 100) {
-            // start loading a page
-            Logger.i(Logger.LOG_TAG, "Start loading page");
-            mLoading = true;
-        } else if (mLoading && n == 100) {
-            // we're done loading -> let's show an ad
-            Logger.i(Logger.LOG_TAG, "Finished loading page");
-            BrowserMoment.showAd(this);
-            mLoading = false;
-        }
+    public void onPageLoaded(@NotNull String url) {
+        super.onPageLoaded(url);
+        Logger.i(Logger.LOG_TAG, "onPageLoaded: " + url);
+        BrowserMoment.showAd(this);
     }
 
     @Override
