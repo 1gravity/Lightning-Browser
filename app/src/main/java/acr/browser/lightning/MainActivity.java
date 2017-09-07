@@ -13,10 +13,8 @@ import com.anthonycr.bonsai.Completable;
 import com.anthonycr.bonsai.CompletableAction;
 import com.anthonycr.bonsai.CompletableSubscriber;
 
-import acr.browser.lightning.browser.activity.BrowserActivity;
-
 @SuppressWarnings("deprecation")
-public class MainActivity extends BrowserActivity {
+public class MainActivity extends AirFoxBrowserActivity {
 
     @NonNull
     @Override

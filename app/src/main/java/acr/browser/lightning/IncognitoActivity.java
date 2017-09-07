@@ -12,10 +12,8 @@ import com.anthonycr.bonsai.Completable;
 import com.anthonycr.bonsai.CompletableAction;
 import com.anthonycr.bonsai.CompletableSubscriber;
 
-import acr.browser.lightning.browser.activity.BrowserActivity;
-
 @SuppressWarnings("deprecation")
-public class IncognitoActivity extends BrowserActivity {
+public class IncognitoActivity extends AirFoxBrowserActivity {
 
     @NonNull
     @Override
@@ -43,12 +41,6 @@ public class IncognitoActivity extends BrowserActivity {
     protected void onNewIntent(Intent intent) {
         // handleNewIntent(intent);
         super.onNewIntent(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // saveOpenTabs();
     }
 
     @Override

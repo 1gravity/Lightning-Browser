@@ -1,4 +1,4 @@
-package com.mgensuite.airfox.browser;
+package acr.browser.lightning;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleRegistry;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.mgensuite.airfox.browser.AirFoxBrowser;
+import com.mgensuite.airfox.browser.BrowserMoment;
+import com.mgensuite.airfox.browser.ProgressBarAnimation;
 import com.mgensuite.airfoxsdk.AirFoxMainActivity;
 import com.mgensuite.datalayer.TrackingObserver;
 import com.mgensuite.datalayer.model.topup.TopupInfo;
@@ -27,14 +30,13 @@ import com.mgensuite.sdk.core.util.MainThreadUtil;
 
 import org.jetbrains.annotations.NotNull;
 
-import acr.browser.lightning.MainActivity;
-import acr.browser.lightning.R;
+import acr.browser.lightning.browser.activity.BrowserActivity;
 import butterknife.BindView;
 
 /**
- * The StartupActivity makes sure there's a sign-up before the browser's main Activity is started.
+ * The AirFoxBrowserActivity implements all AirFox specific functions.
  */
-public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegistryOwner {
+public abstract class AirFoxBrowserActivity extends BrowserActivity implements LifecycleRegistryOwner {
 
     private static final String TOKEN_CURRENCY = "AIR";
 
@@ -135,7 +137,8 @@ public class AirFoxBrowserActivity extends MainActivity implements LifecycleRegi
         ActionBar actionBar = getSupportActionBar();
         View airFoxButton = actionBar.getCustomView().findViewById(R.id.airfox_button);
         if (airFoxButton != null) airFoxButton.setOnClickListener(view -> {
-            Intent intent = new Intent(AirFoxBrowserActivity.this, AirFoxMainActivity.class);
+            Intent intent = new Intent(AirFoxBrowserActivity.this,
+                    AirFoxMainActivity.class);
             startActivity(intent);
         });
     }
