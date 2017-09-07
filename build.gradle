@@ -1,29 +1,77 @@
 buildscript {
-    ext.kotlin_version = '1.1.3'
+    ext.kotlin_version = '1.1.3-2'
     repositories {
         jcenter()
+
+        // AirFox AWS S3 repository
+        maven {
+            url "s3://airfox-mobile-repos/releases"
+            credentials(AwsCredentials) {
+                accessKey AIRFOX_REPO_ACCESS_KEY
+                secretKey AIRFOX_REPO_SECRET_KEY
+            }
+        }
+        maven {
+            url "s3://airfox-mobile-repos/snapshots"
+            credentials(AwsCredentials) {
+                accessKey AIRFOX_REPO_ACCESS_KEY
+                secretKey AIRFOX_REPO_SECRET_KEY
+            }
+        }
+
+        // Crashlytics
+        maven { url 'https://maven.fabric.io/public' }
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath 'com.google.gms:google-services:3.1.0'
+
+        // Retrolambda
+        classpath 'me.tatarka:gradle-retrolambda:3.7.0'
     }
 }
 
 allprojects {
+    ext.airfox_lib_version = '3.7.1-SNAPSHOT'
+
     repositories {
         jcenter()
         mavenCentral()
         maven { url "https://maven.google.com" }
+
+        // AirFox AWS S3 repository
+        maven {
+            url "s3://airfox-mobile-repos/releases"
+            credentials(AwsCredentials) {
+                accessKey AIRFOX_REPO_ACCESS_KEY
+                secretKey AIRFOX_REPO_SECRET_KEY
+            }
+        }
+        maven {
+            url "s3://airfox-mobile-repos/snapshots"
+            credentials(AwsCredentials) {
+                accessKey AIRFOX_REPO_ACCESS_KEY
+                secretKey AIRFOX_REPO_SECRET_KEY
+            }
+        }
+
+        // Crashlytics
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 
 ext {
-    minSdkVersion = 14
+    minSdkVersion = 16
     targetSdkVersion = 26
-    buildToolsVersion = '26.0.0'
+    buildToolsVersion = '26.0.1'
 
     versionName = '4.5.1'
     versionCode_lite = 98
     versionCode_plus = 96
+
+    support_lib_version = '26.0.2'
 }

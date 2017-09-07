@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.webkit.WebView;
@@ -32,7 +33,7 @@ import acr.browser.lightning.utils.FileUtils;
 import acr.browser.lightning.utils.MemoryLeakUtils;
 import acr.browser.lightning.utils.Preconditions;
 
-public class BrowserApp extends Application {
+public class BrowserApp extends MultiDexApplication {
 
     private static final String TAG = "BrowserApp";
 

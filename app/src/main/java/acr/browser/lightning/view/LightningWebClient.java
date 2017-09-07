@@ -31,6 +31,9 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.anthonycr.mezzanine.MezzanineGenerator;
+import com.mgensuite.sdk.core.util.Logger;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.net.URISyntaxException;
@@ -40,13 +43,16 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import acr.browser.lightning.BrowserApp;
 import acr.browser.lightning.BuildConfig;
 import acr.browser.lightning.R;
-import acr.browser.lightning.BrowserApp;
+import acr.browser.lightning.adblock.AdBlocker;
 import acr.browser.lightning.constant.Constants;
 import acr.browser.lightning.controller.UIController;
 import acr.browser.lightning.dialog.BrowserDialog;
-import acr.browser.lightning.adblock.AdBlock;
+import acr.browser.lightning.js.InvertPage;
+import acr.browser.lightning.js.TextReflow;
+import acr.browser.lightning.preference.PreferenceManager;
 import acr.browser.lightning.utils.IntentUtils;
 import acr.browser.lightning.utils.Preconditions;
 import acr.browser.lightning.utils.ProxyUtils;
@@ -63,7 +69,15 @@ public class LightningWebClient extends WebViewClient {
     @NonNull private final IntentUtils mIntentUtils;
 
     @Inject ProxyUtils mProxyUtils;
-    @Inject AdBlock mAdBlock;
+    @Inject PreferenceManager mPreferences;
+
+    @NonNull private AdBlocker mAdBlock;
+
+    @NonNull private final TextReflow mTextReflowJs;
+    @NonNull private final InvertPage mInvertPageJs;
+
+    private String mCurrentUrl;
+    private boolean mPageLoading;
 
     LightningWebClient(@NonNull Activity activity, @NonNull LightningView lightningView) {
         BrowserApp.getAppComponent().inject(this);
@@ -72,8 +86,22 @@ public class LightningWebClient extends WebViewClient {
         mActivity = activity;
         mUIController = (UIController) activity;
         mLightningView = lightningView;
-        mAdBlock.updatePreference();
+        mAdBlock = chooseAdBlocker();
         mIntentUtils = new IntentUtils(activity);
+        mTextReflowJs = new MezzanineGenerator.TextReflow();
+        mInvertPageJs = new MezzanineGenerator.InvertPage();
+    }
+
+    public void updatePreferences() {
+        mAdBlock = chooseAdBlocker();
+    }
+
+    private AdBlocker chooseAdBlocker() {
+        if (mPreferences.getAdBlockEnabled()) {
+            return BrowserApp.getAppComponent().provideAssetsAdBlocker();
+        } else {
+            return BrowserApp.getAppComponent().provideNoOpAdBlocker();
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -95,12 +123,30 @@ public class LightningWebClient extends WebViewClient {
             ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
             return new WebResourceResponse("text/plain", "utf-8", EMPTY);
         }
-        return null;
+        return super.shouldInterceptRequest(view, url);
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        mCurrentUrl = url;
+        mPageLoading = true;
+
+        mLightningView.getTitleInfo().setFavicon(null);
+        if (mLightningView.isShown()) {
+            mUIController.updateUrl(url, true);
+            mUIController.showActionBar();
+        }
+        mUIController.tabChanged(mLightningView);
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onPageFinished(@NonNull WebView view, String url) {
+        if (mPageLoading && isCurrentUrl(url)) {
+            mPageLoading = false;
+            mUIController.onPageLoaded(url);
+        }
+
         if (view.isShown()) {
             mUIController.updateUrl(url, false);
             mUIController.setBackButtonEnabled(view.canGoBack());
@@ -112,21 +158,14 @@ public class LightningWebClient extends WebViewClient {
         } else {
             mLightningView.getTitleInfo().setTitle(view.getTitle());
         }
-        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT &&
-            mLightningView.getInvertePage()) {
-            view.evaluateJavascript(Constants.JAVASCRIPT_INVERT_PAGE, null);
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT && mLightningView.getInvertePage()) {
+            view.evaluateJavascript(mInvertPageJs.provideJs(), null);
         }
         mUIController.tabChanged(mLightningView);
     }
 
-    @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        mLightningView.getTitleInfo().setFavicon(null);
-        if (mLightningView.isShown()) {
-            mUIController.updateUrl(url, true);
-            mUIController.showActionBar();
-        }
-        mUIController.tabChanged(mLightningView);
+    private boolean isCurrentUrl(String url){
+        return mCurrentUrl != null && url.toLowerCase().contains(mCurrentUrl.toLowerCase());
     }
 
     @Override
@@ -184,7 +223,7 @@ public class LightningWebClient extends WebViewClient {
                     @Override
                     public void run() {
                         mZoomScale = newScale;
-                        view.evaluateJavascript(Constants.JAVASCRIPT_TEXT_REFLOW, new ValueCallback<String>() {
+                        view.evaluateJavascript(mTextReflowJs.provideJs(), new ValueCallback<String>() {
                             @Override
                             public void onReceiveValue(String value) {
                                 mIsRunning = false;
@@ -297,6 +336,7 @@ public class LightningWebClient extends WebViewClient {
         // Check if configured proxy is available
         if (!mProxyUtils.isProxyReady(mActivity)) {
             // User has been notified
+            mPageLoading = false;
             return true;
         }
 
@@ -313,6 +353,7 @@ public class LightningWebClient extends WebViewClient {
 
         if (isMailOrIntent(url, view) || mIntentUtils.startActivityForUrl(view, url)) {
             // If it was a mailto: link, or an intent, or could be launched elsewhere, do that
+            mPageLoading = false;
             return true;
         }
 

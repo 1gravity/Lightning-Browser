@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import acr.browser.lightning.BuildConfig;
 import acr.browser.lightning.constant.Constants;
 import acr.browser.lightning.utils.FileUtils;
 
@@ -105,7 +106,7 @@ public class PreferenceManager {
     }
 
     public boolean getAdBlockEnabled() {
-        return mPrefs.getBoolean(Name.BLOCK_ADS, false);
+        return mPrefs.getBoolean(Name.BLOCK_ADS, true);
     }
 
     public boolean getBlockImagesEnabled() {
@@ -225,12 +226,12 @@ public class PreferenceManager {
     }
 
     public int getSearchChoice() {
-        return mPrefs.getInt(Name.SEARCH, 1);
+        return mPrefs.getInt(Name.SEARCH, BuildConfig.DEFAULT_SEARCH_ENGINE_INDEX);
     }
 
     @NonNull
     public String getSearchUrl() {
-        return mPrefs.getString(Name.SEARCH_URL, Constants.GOOGLE_SEARCH);
+        return mPrefs.getString(Name.SEARCH_URL, BuildConfig.DEFAULT_SEARCH_ENGINE);
     }
 
     public boolean getTextReflowEnabled() {

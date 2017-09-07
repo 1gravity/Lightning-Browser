@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "908246432617",
+    "firebase_url": "https://airfox-demo-apps.firebaseio.com",
+    "project_id": "airfox-demo-apps",
+    "storage_bucket": "airfox-demo-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908246432617:android:0599f8b90444ecb9",
+        "android_client_info": {
+          "package_name": "com.mgensuite.airfox.browser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908246432617-h1dgehtt4mbns40t84tjiq3raihf8tlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh0AV6P9AZmDxciLEWElPjXDYAHGogPIk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

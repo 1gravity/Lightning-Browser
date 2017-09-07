@@ -31,7 +31,7 @@
     <string name="size">Text size</string>
     <string name="recommended">Recommended</string>
     <string name="search">Search engine</string>
-    <string name="search_hint">Search</string>
+    <string name="search_hint">Search or type URL</string>
     <string name="wideViewPort">Use wide viewport</string>
     <string name="overViewMode">Load pages in overview mode</string>
     <string name="restore">Restore lost tabs on start</string>
@@ -178,6 +178,7 @@
     <string name="bookmark_export_failure">Sorry, bookmarks could not be exported!</string>
     <string name="bookmark_settings">Bookmark Settings</string>
     <string name="import_bookmark_error">Could not import bookmarks from file</string>
+    <string name="message_bookmark_added">Bookmark added.</string>
     <string name="title_chooser">Choose a file</string>
     <string name="settings_general">General Settings</string>
     <string name="settings_display">Display Settings</string>
@@ -194,6 +195,7 @@
     <string name="loading_failed">Couldn\'t load anything from the page.</string>
     <string name="snacktory">Snacktory</string>
     <string name="jsoup">jsoup: Java HTML Parser</string>
+    <string name="progress_bar">Android-RoundCornerProgressBar</string>
     <string name="mit_license">MIT License</string>
     <string name="url_contents">URL box contents</string>
     <string name="text_encoding">Text encoding</string>

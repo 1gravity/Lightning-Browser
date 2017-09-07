@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion project.targetSdkVersion
@@ -11,11 +14,10 @@ android {
         targetSdkVersion project.targetSdkVersion
         versionName project.versionName
         vectorDrawables.useSupportLibrary = true
-    }
 
-    sourceSets {
-        lightningPlus.setRoot('src/LightningPlus')
-        lightningLite.setRoot('src/LightningLite')
+        buildConfigField ("String", "DEFAULT_SEARCH_ENGINE", "\"https://www.bing.com/search?q=\"")
+        // see acr.browser.lightning.search.SearchEngineProvider
+        buildConfigField ("int", "DEFAULT_SEARCH_ENGINE_INDEX", "1")
     }
 
     buildTypes {
@@ -44,14 +46,52 @@ android {
             applicationId "acr.browser.barebones"
             versionCode project.versionCode_lite
         }
+
+        airfox {
+            applicationId "com.mgensuite.airfox.browser"
+            versionCode 10
+            versionName '1.0.0'
+
+            // because of draw over other apps permission
+            targetSdkVersion 22
+
+            multiDexEnabled true
+
+            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
+
+            resValue "string", "contact_telegram", "http://t.me/airfoxico"
+            resValue "string", "contact_email_address", "care@airfox.io"
+            resValue "string", "contact_faq_address", "http://www.airtoken.com"
+
+            buildConfigField ("String", "DEFAULT_SEARCH_ENGINE", "\"https://www.bing.com/search?q=\"")
+            // see acr.browser.lightning.search.SearchEngineProvider
+            buildConfigField ("int", "DEFAULT_SEARCH_ENGINE_INDEX", "3")
+        }
     }
 
     lintOptions {
         abortOnError true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
+    retrolambda {
+        javaVersion JavaVersion.VERSION_1_6
+        defaultMethods false
+        incremental true
+        jvmArgs '-noverify'
+    }
+
     packagingOptions {
         exclude '.readme'
+        exclude 'publicsuffixes.gz'
     }
 }
 
@@ -66,13 +106,25 @@ dexcount {
 dependencies {
     testCompile 'junit:junit:4.12'
 
+    // AirFox SDK
+    compile ("com.mgensuite:airfox-mobile-sdk:$airfox_lib_version") {
+        exclude group: 'com.intellij', module: 'annotations'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        transitive = true
+        changing = true
+    }
+
+    // MultiDex
+    compile 'com.android.support:multidex:1.0.2'
+    androidTestCompile 'com.android.support:multidex:1.0.2'
+
     // support libraries
-    def supportLibVersion = '25.4.0'
-    compile "com.android.support:palette-v7:$supportLibVersion"
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
-    compile "com.android.support:design:$supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
-    compile "com.android.support:support-v4:$supportLibVersion"
+    compile "com.android.support:support-v4:$support_lib_version"
+    compile "com.android.support:palette-v7:$support_lib_version"
+    compile "com.android.support:appcompat-v7:$support_lib_version"
+    compile "com.android.support:design:$support_lib_version"
+    compile "com.android.support:recyclerview-v7:$support_lib_version"
+    compile "com.android.support:support-v4:$support_lib_version"
 
     // html parsing for reading mode
     compile 'org.jsoup:jsoup:1.10.2'
@@ -80,13 +132,13 @@ dependencies {
     // dependency injection
     def daggerVersion = '2.11'
     compile "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     provided 'javax.annotation:jsr250-api:1.0'
 
     // view binding
-    def butterknifeVersion = '8.6.0'
+    def butterknifeVersion = '8.8.0'
     compile "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     // permissions
     compile 'com.anthonycr.grant:permissions:1.1.2'
@@ -95,6 +147,11 @@ dependencies {
     compile 'net.i2p.android:client:0.8'
 
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
+
+    // file reading
+    def mezzanineVersion = '1.0.0'
+    compile "com.anthonycr.mezzanine:mezzanine:$mezzanineVersion"
+    kapt "com.anthonycr.mezzanine:mezzanine-compiler:$mezzanineVersion"
 
     // tor proxy
     def netcipherVersion = '2.0.0-alpha1'
@@ -110,6 +167,11 @@ dependencies {
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
-    // Kotlin
+    // kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // progress indicator
+    compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 }
+
+apply plugin: 'com.google.gms.google-services'
