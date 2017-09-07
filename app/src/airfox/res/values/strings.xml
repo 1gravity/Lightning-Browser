@@ -11,4 +11,6 @@
     <string name="watch_video_download">Watch a video and download the app to earn AirTokens</string>
     <string name="boarding_login">Sign up</string>
     <string name="splash_titles">Mobile Recharges\nMicro-Loans</string>
+
+    <string name="air_balance">Your balance: %s AIR</string>
 </resources>

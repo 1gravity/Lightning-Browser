@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.mgensuite.airfox.browser.AirFoxBrowser;
@@ -76,6 +78,7 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
                 }
             };
 
+    @BindView(R.id.airfox_progress_container) View mProgress;
     @BindView(R.id.airfox_progress_bar) RoundCornerProgressBar mProgressBar;
     @BindView(R.id.airfox_progress_text) TextView mProgressText;
 
@@ -103,8 +106,8 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
                 && maximum != null) {
             // progress bar
             mProgressBar.setMax(maximum.floatValue());
-            float maxValue = (float) Math.min(balance, maximum);
-            ProgressBarAnimation anim = new ProgressBarAnimation(mProgressBar, 0f, maxValue);
+            float balanceValue = (float) Math.min(balance, maximum);
+            ProgressBarAnimation anim = new ProgressBarAnimation(mProgressBar, 0f, balanceValue);
             anim.setDuration(2000);
             mProgressBar.startAnimation(anim);
 
@@ -114,6 +117,11 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
                     WalletHelper.formatAmountLocale(maximum, null) :
                     WalletHelper.formatAmountLocaleTwoDigits(maximum,null);
             mProgressText.setText(amount);
+
+            mProgress.setOnClickListener(view -> {
+                String balanceString = WalletHelper.formatAmountNoFraction(balance);
+                Toast.makeText(this, getString(R.string.air_balance, balanceString), Toast.LENGTH_LONG).show();
+            });
         }
     }
 
