@@ -48023,4 +48023,6 @@
 127.0.0.1	zz.zeroredirect1.com
 127.0.0.1	zzz.clickbank.net
 127.0.0.1	_thums.ero-advertising.com
-# Hosts: 48015
+127.0.0.1	beap-bc.yahoo.com
+127.0.0.1	ad.apps.fm
+# Hosts: 48017

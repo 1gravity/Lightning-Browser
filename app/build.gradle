@@ -59,7 +59,6 @@ android {
 
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
 
-            resValue "string", "contact_telegram", "http://t.me/airfoxico"
             resValue "string", "contact_email_address", "care@airfox.io"
             resValue "string", "contact_faq_address", "http://www.airtoken.com"
 
