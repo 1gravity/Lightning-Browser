@@ -28,9 +28,9 @@ android {
         }
 
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles 'proguard-project.txt'
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'proguard-project.txt', 'proguard-rules-airfox.pro'
         }
     }
 
@@ -76,10 +76,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    dexOptions {
-        javaMaxHeapSize "2g"
     }
 
     retrolambda {
