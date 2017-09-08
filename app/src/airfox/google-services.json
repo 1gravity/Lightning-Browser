@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:908246432617:android:0599f8b90444ecb9",
+        "mobilesdk_app_id": "1:908246432617:android:1904b16827fe226b",
         "android_client_info": {
-          "package_name": "com.mgensuite.airfox.browser"
+          "package_name": "com.mgensuite.airfox.browser2"
         }
       },
       "oauth_client": [
