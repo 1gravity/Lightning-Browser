@@ -13,6 +13,7 @@ import java.net.URISyntaxException
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.collections.HashMap
 
 /**
  * An implementation of the ad blocker that checks the URLs against the hosts stored in assets.
@@ -23,6 +24,8 @@ class AssetsAdBlocker @Inject
 internal constructor(private val application: Application) : AdBlocker {
 
     private val blockedDomainsList = HashSet<String>()
+
+    private val checkedDomainsList = HashMap<String, Boolean>()
 
     init {
         loadHostsFile().subscribeOn(Schedulers.io()).subscribe()
@@ -41,7 +44,14 @@ internal constructor(private val application: Application) : AdBlocker {
             return false
         }
 
+        val isAnAd = checkedDomainsList.get(domain)
+        if (isAnAd != null) {
+            if (isAnAd) Log.d(TAG, "URL '$url' is an ad")
+            return isAnAd
+        }
+
         val isOnBlacklist = blockedDomainsList.contains(domain)
+        checkedDomainsList.put(domain, isOnBlacklist)
         if (isOnBlacklist) {
             Log.d(TAG, "URL '$url' is an ad")
         }
