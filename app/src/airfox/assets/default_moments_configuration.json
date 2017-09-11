@@ -150,6 +150,75 @@
       ]
     },
     {
+      "Title": "Rewarded Videos",
+      "ID": "video",
+      "frequency": 1,
+      "network": "both",
+      "parameters": [
+        {
+          "name": "min_time_between_ads",
+          "value": "20"
+        },
+        {
+          "name": "max_time_between_ads",
+          "value": "600"
+        },
+        {
+          "name": "max_size_mem_cache",
+          "value": "1"
+        },
+        {
+          "name": "max_size_disc_cache",
+          "value": "1"
+        }
+      ],
+      "Networks": [
+        {
+          "sequence": 1,
+          "name": "MarketPlace (Mopub)",
+          "type": "MOPUB",
+          "placements": [
+            {
+              "sequence": 2,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "MoPub Ad Unit ID",
+                  "value": "95f7b51d3a6647e2aa97a63359de78a9"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 2,
+          "name": "AdMob",
+          "type": "ADMOB",
+          "placements": [
+            {
+              "sequence": 3,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "AdMob App ID",
+                  "value": "ca-app-pub-5434727245226926~2328575981"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "AdMob Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/3090993315"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "Title": "AirFox Post-Call",
       "ID": "post-call",
       "frequency": 1,
