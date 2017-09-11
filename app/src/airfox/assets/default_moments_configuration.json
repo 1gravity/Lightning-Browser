@@ -365,14 +365,9 @@
               "format": "interstitial",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
-                  "label": "recharge_interstitial_post-call",
-                  "value": "recharge_interstitial_post-call"
+                  "label": "AirFox_post-call_interstitial",
+                  "value": "AirFox_post-call_interstitial"
                 }
               ]
             },
@@ -382,14 +377,9 @@
               "format": "native",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
-                  "label": "recharge_native_post-call",
-                  "value": "recharge_native_post-call"
+                  "label": "AirFox_post-call_native",
+                  "value": "AirFox_post-call_native"
                 }
               ]
             }
@@ -589,14 +579,9 @@
               "format": "interstitial",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
-                  "label": "recharge_interstitial_post-unlock",
-                  "value": "recharge_interstitial_post-unlock"
+                  "label": "AirFox_post-unlock_interstitial",
+                  "value": "AirFox_post-unlock_interstitial"
                 }
               ]
             },
@@ -606,14 +591,9 @@
               "format": "native",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
-                  "label": "recharge_native_post-unlock",
-                  "value": "recharge_native_post-unlock"
+                  "label": "AirFox_post-unlock_native",
+                  "value": "AirFox_post-unlock_native"
                 }
               ]
             }
