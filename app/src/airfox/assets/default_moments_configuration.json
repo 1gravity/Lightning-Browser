@@ -88,12 +88,12 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~1568479891"
+                  "value": "ca-app-pub-5434727245226926~2328575981"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3045213095"
+                  "value": "ca-app-pub-5434727245226926/1704037258"
                 }
               ]
             }
@@ -250,19 +250,36 @@
           "type": "ADMOB",
           "placements": [
             {
-              "sequence": 3,
+              "sequence": 1,
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "AdMob App ID",
+                  "value": "ca-app-pub-5434727245226926~2328575981"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "AdMob Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/6953506266"
+                }
+              ]
+            },
+            {
+              "sequence": 2,
               "enabled": true,
               "format": "native",
               "parameters": [
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~8792407010"
+                  "value": "ca-app-pub-5434727245226926~2328575981"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3626219559"
+                  "value": "ca-app-pub-5434727245226926/4490994454"
                 }
               ]
             }
@@ -433,12 +450,29 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~8792407010"
+                  "value": "ca-app-pub-5434727245226926~2328575981"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/9722345305"
+                  "value": "ca-app-pub-5434727245226926/4623566838"
+                }
+              ]
+            },
+            {
+              "sequence": 2,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "AdMob App ID",
+                  "value": "ca-app-pub-5434727245226926~2328575981"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "AdMob Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/6866586798"
                 }
               ]
             }
@@ -647,12 +681,12 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~1568479891"
+                  "value": "ca-app-pub-5434727245226926~2328575981"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3045213095"
+                  "value": "ca-app-pub-5434727245226926/7531079002"
                 }
               ]
             }
@@ -784,7 +818,7 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~1568479891"
+                  "value": "ca-app-pub-5434727245226926~2328575981"
                 },
                 {
                   "name": "adUnitId",
