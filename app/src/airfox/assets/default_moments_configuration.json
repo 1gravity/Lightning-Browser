@@ -1,143 +1,6 @@
 {
   "Moments": [
     {
-      "Title": "AirFox AdWall",
-      "ID": "adwall",
-      "frequency": 3,
-      "cache_expires_after": 86400000,
-      "network": "both",
-      "parameters": [
-        {
-          "name": "min_time_between_ads",
-          "value": "60"
-        },
-        {
-          "name": "max_time_between_ads",
-          "value": "600"
-        },
-        {
-          "name": "max_size_mem_cache",
-          "value": "2"
-        },
-        {
-          "name": "max_size_disc_cache",
-          "value": "10"
-        }
-      ],
-      "Networks": [
-        {
-          "sequence": 1,
-          "name": "Facebook",
-          "type": "FAN",
-          "placements": [
-            {
-              "sequence": 1,
-              "enabled": true,
-              "format": "native",
-              "parameters": [
-                {
-                  "name": "adUnitId",
-                  "label": "FAN Placement Id",
-                  "value": "286895285087190_327538324356219"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sequence": 2,
-          "name": "MarketPlace (Mopub)",
-          "type": "MOPUB",
-          "placements": [
-            {
-              "sequence": 2,
-              "enabled": true,
-              "format": "native",
-              "parameters": [
-                {
-                  "name": "adUnitId",
-                  "label": "MoPub Ad Unit ID",
-                  "value": "78a905fba26d41a8ba61fae59c536a3e"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sequence": 3,
-          "name": "AdMob",
-          "type": "ADMOB",
-          "placements": [
-            {
-              "sequence": 3,
-              "enabled": true,
-              "format": "native",
-              "parameters": [
-                {
-                  "name": "appId",
-                  "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~1568479891"
-                },
-                {
-                  "name": "adUnitId",
-                  "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3045213095"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sequence": 4,
-          "name": "AppLovin",
-          "type": "APPLOVIN",
-          "placements": [
-            {
-              "sequence": 2,
-              "enabled": true,
-              "format": "native",
-              "parameters": [
-                {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
-                  "name": "adUnitId",
-                  "label": "recharge_native_adwall",
-                  "value": "recharge_native_adwall"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sequence": 5,
-          "name": "Avocarrot",
-          "type": "AVOCARROT",
-          "placements": [
-            {
-              "sequence": 1,
-              "enabled": true,
-              "format": "native",
-              "parameters": [
-                {
-                  "name": "appId",
-                  "label": "API Key",
-                  "value": "cc35474a-f59b-4b27-83e1-a78a74a51a45"
-                },
-                {
-                  "name": "adUnitId",
-                  "label": "Ad Unit Id",
-                  "value": "1d1a42f4-307b-4cbe-a83d-98ed03d77164"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "Title": "AirFox Browser",
       "ID": "browser",
       "frequency": 10,
@@ -187,7 +50,7 @@
                 {
                   "name": "adUnitId",
                   "label": "FAN Placement Id",
-                  "value": "286895285087190_327538324356219"
+                  "value": "1420943194608607_1458148810888045"
                 }
               ]
             }
@@ -287,12 +150,20 @@
       ]
     },
     {
-      "Title": "AirFox Lockscreen",
-      "ID": "lockscreen",
-      "frequency": 2,
+      "Title": "AirFox Post-Call",
+      "ID": "post-call",
+      "frequency": 1,
       "cache_expires_after": 86400000,
       "network": "both",
       "parameters": [
+        {
+          "name": "accepted_call",
+          "value": "true"
+        },
+        {
+          "name": "rejected_call",
+          "value": "true"
+        },
         {
           "name": "min_time_between_ads",
           "value": "0"
@@ -307,7 +178,7 @@
         },
         {
           "name": "max_size_disc_cache",
-          "value": "10"
+          "value": "5"
         }
       ],
       "Networks": [
@@ -319,12 +190,24 @@
             {
               "sequence": 1,
               "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "FAN Placement Id",
+                  "value": "1420943194608607_1460681983968061"
+                }
+              ]
+            },
+            {
+              "sequence": 2,
+              "enabled": true,
               "format": "native",
               "parameters": [
                 {
                   "name": "adUnitId",
                   "label": "FAN Placement Id",
-                  "value": "286895285087190_327538324356219"
+                  "value": "1420943194608607_1460691690633757"
                 }
               ]
             }
@@ -336,6 +219,18 @@
           "type": "MOPUB",
           "placements": [
             {
+              "sequence": 1,
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "MoPub Ad Unit ID",
+                  "value": "37b14401725149e8a13c92612e1ee66c"
+                }
+              ]
+            },
+            {
               "sequence": 2,
               "enabled": true,
               "format": "native",
@@ -343,7 +238,7 @@
                 {
                   "name": "adUnitId",
                   "label": "MoPub Ad Unit ID",
-                  "value": "78a905fba26d41a8ba61fae59c536a3e"
+                  "value": "a6e5f3ed747d48d5850e65459da4a0b6"
                 }
               ]
             }
@@ -362,12 +257,12 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~1568479891"
+                  "value": "ca-app-pub-5434727245226926~8792407010"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3045213095"
+                  "value": "ca-app-pub-5434727245226926/3626219559"
                 }
               ]
             }
@@ -378,6 +273,23 @@
           "name": "AppLovin",
           "type": "APPLOVIN",
           "placements": [
+            {
+              "sequence": 1,
+              "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "recharge_interstitial_post-call",
+                  "value": "recharge_interstitial_post-call"
+                }
+              ]
+            },
             {
               "sequence": 2,
               "enabled": true,
@@ -390,8 +302,8 @@
                 },
                 {
                   "name": "adUnitId",
-                  "label": "recharge_native_adwall",
-                  "value": "recharge_native_adwall"
+                  "label": "recharge_native_post-call",
+                  "value": "recharge_native_post-call"
                 }
               ]
             }
@@ -405,6 +317,23 @@
             {
               "sequence": 1,
               "enabled": true,
+              "format": "interstitial",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "API Key",
+                  "value": "cc35474a-f59b-4b27-83e1-a78a74a51a45"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "Ad Unit Id",
+                  "value": "f7d62978-dec1-47b4-b8f1-28cfbc74ed10"
+                }
+              ]
+            },
+            {
+              "sequence": 2,
+              "enabled": true,
               "format": "native",
               "parameters": [
                 {
@@ -415,9 +344,21 @@
                 {
                   "name": "adUnitId",
                   "label": "Ad Unit Id",
-                  "value": "1d1a42f4-307b-4cbe-a83d-98ed03d77164"
+                  "value": "3b1c27ea-0f33-4ca6-ae37-a33bc11a9fad"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "sequence": "10",
+          "name": "Airfox",
+          "type": "AIRFOX",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial"
             }
           ]
         }
@@ -461,7 +402,7 @@
                 {
                   "name": "adUnitId",
                   "label": "FAN Placement Id",
-                  "value": "286895285087190_327537841022934"
+                  "value": "1420943194608607_1460679953968264"
                 }
               ]
             },
@@ -473,7 +414,7 @@
                 {
                   "name": "adUnitId",
                   "label": "FAN Placement Id",
-                  "value": "286895285087190_327538037689581"
+                  "value": "1420943194608607_1460692317300361"
                 }
               ]
             }
@@ -615,27 +556,31 @@
               ]
             }
           ]
+        },
+        {
+          "sequence": "10",
+          "name": "Airfox",
+          "type": "AIRFOX",
+          "placements": [
+            {
+              "sequence": "1",
+              "enabled": true,
+              "format": "interstitial"
+            }
+          ]
         }
       ]
     },
     {
-      "Title": "AirFox Post-Call",
-      "ID": "post-call",
-      "frequency": 1,
+      "Title": "AirFox AdWall",
+      "ID": "adwall",
+      "frequency": 3,
       "cache_expires_after": 86400000,
       "network": "both",
       "parameters": [
         {
-          "name": "accepted_call",
-          "value": "true"
-        },
-        {
-          "name": "rejected_call",
-          "value": "true"
-        },
-        {
           "name": "min_time_between_ads",
-          "value": "0"
+          "value": "60"
         },
         {
           "name": "max_time_between_ads",
@@ -647,7 +592,7 @@
         },
         {
           "name": "max_size_disc_cache",
-          "value": "5"
+          "value": "10"
         }
       ],
       "Networks": [
@@ -659,24 +604,12 @@
             {
               "sequence": 1,
               "enabled": true,
-              "format": "interstitial",
-              "parameters": [
-                {
-                  "name": "adUnitId",
-                  "label": "FAN Placement Id",
-                  "value": "286895285087190_286905641752821"
-                }
-              ]
-            },
-            {
-              "sequence": 2,
-              "enabled": true,
               "format": "native",
               "parameters": [
                 {
                   "name": "adUnitId",
                   "label": "FAN Placement Id",
-                  "value": "286895285087190_286902588419793"
+                  "value": "1420943194608607_1420944104608516"
                 }
               ]
             }
@@ -688,18 +621,6 @@
           "type": "MOPUB",
           "placements": [
             {
-              "sequence": 1,
-              "enabled": true,
-              "format": "interstitial",
-              "parameters": [
-                {
-                  "name": "adUnitId",
-                  "label": "MoPub Ad Unit ID",
-                  "value": "37b14401725149e8a13c92612e1ee66c"
-                }
-              ]
-            },
-            {
               "sequence": 2,
               "enabled": true,
               "format": "native",
@@ -707,7 +628,7 @@
                 {
                   "name": "adUnitId",
                   "label": "MoPub Ad Unit ID",
-                  "value": "a6e5f3ed747d48d5850e65459da4a0b6"
+                  "value": "78a905fba26d41a8ba61fae59c536a3e"
                 }
               ]
             }
@@ -726,12 +647,12 @@
                 {
                   "name": "appId",
                   "label": "AdMob App ID",
-                  "value": "ca-app-pub-5434727245226926~8792407010"
+                  "value": "ca-app-pub-5434727245226926~1568479891"
                 },
                 {
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
-                  "value": "ca-app-pub-5434727245226926/3626219559"
+                  "value": "ca-app-pub-5434727245226926/3045213095"
                 }
               ]
             }
@@ -742,23 +663,6 @@
           "name": "AppLovin",
           "type": "APPLOVIN",
           "placements": [
-            {
-              "sequence": 1,
-              "enabled": true,
-              "format": "interstitial",
-              "parameters": [
-                {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
-                  "name": "adUnitId",
-                  "label": "recharge_interstitial_post-call",
-                  "value": "recharge_interstitial_post-call"
-                }
-              ]
-            },
             {
               "sequence": 2,
               "enabled": true,
@@ -771,8 +675,8 @@
                 },
                 {
                   "name": "adUnitId",
-                  "label": "recharge_native_post-call",
-                  "value": "recharge_native_post-call"
+                  "label": "recharge_native_adwall",
+                  "value": "recharge_native_adwall"
                 }
               ]
             }
@@ -786,7 +690,7 @@
             {
               "sequence": 1,
               "enabled": true,
-              "format": "interstitial",
+              "format": "native",
               "parameters": [
                 {
                   "name": "appId",
@@ -796,12 +700,132 @@
                 {
                   "name": "adUnitId",
                   "label": "Ad Unit Id",
-                  "value": "f7d62978-dec1-47b4-b8f1-28cfbc74ed10"
+                  "value": "1d1a42f4-307b-4cbe-a83d-98ed03d77164"
                 }
               ]
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "AirFox Lockscreen",
+      "ID": "lockscreen",
+      "frequency": 2,
+      "cache_expires_after": 86400000,
+      "network": "both",
+      "parameters": [
+        {
+          "name": "min_time_between_ads",
+          "value": "0"
+        },
+        {
+          "name": "max_time_between_ads",
+          "value": "600"
+        },
+        {
+          "name": "max_size_mem_cache",
+          "value": "2"
+        },
+        {
+          "name": "max_size_disc_cache",
+          "value": "10"
+        }
+      ],
+      "Networks": [
+        {
+          "sequence": 1,
+          "name": "Facebook",
+          "type": "FAN",
+          "placements": [
+            {
+              "sequence": 1,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "FAN Placement Id",
+                  "value": "1420943194608607_1420944104608516"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 2,
+          "name": "MarketPlace (Mopub)",
+          "type": "MOPUB",
+          "placements": [
             {
               "sequence": 2,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "MoPub Ad Unit ID",
+                  "value": "78a905fba26d41a8ba61fae59c536a3e"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 3,
+          "name": "AdMob",
+          "type": "ADMOB",
+          "placements": [
+            {
+              "sequence": 3,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "AdMob App ID",
+                  "value": "ca-app-pub-5434727245226926~1568479891"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "AdMob Ad unit ID",
+                  "value": "ca-app-pub-5434727245226926/3045213095"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 4,
+          "name": "AppLovin",
+          "type": "APPLOVIN",
+          "placements": [
+            {
+              "sequence": 2,
+              "enabled": true,
+              "format": "native",
+              "parameters": [
+                {
+                  "name": "appId",
+                  "label": "Account Id",
+                  "value": "8a809418015656b8ea62c7d1985d00eb"
+                },
+                {
+                  "name": "adUnitId",
+                  "label": "recharge_native_adwall",
+                  "value": "recharge_native_adwall"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 5,
+          "name": "Avocarrot",
+          "type": "AVOCARROT",
+          "placements": [
+            {
+              "sequence": 1,
               "enabled": true,
               "format": "native",
               "parameters": [
@@ -813,7 +837,7 @@
                 {
                   "name": "adUnitId",
                   "label": "Ad Unit Id",
-                  "value": "3b1c27ea-0f33-4ca6-ae37-a33bc11a9fad"
+                  "value": "1d1a42f4-307b-4cbe-a83d-98ed03d77164"
                 }
               ]
             }
