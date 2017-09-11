@@ -752,14 +752,9 @@
               "format": "native",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
-                  "label": "recharge_native_adwall",
-                  "value": "recharge_native_adwall"
+                  "label": "AirFox_AdWall_Native",
+                  "value": "AirFox_AdWall_Native"
                 }
               ]
             }
