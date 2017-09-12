@@ -37,7 +37,7 @@ buildscript {
 }
 
 allprojects {
-    ext.airfox_lib_version = '3.7.4-SNAPSHOT'
+    ext.airfox_lib_version = '3.8.0-SNAPSHOT'
 
     repositories {
         jcenter()

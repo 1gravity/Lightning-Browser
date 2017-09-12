@@ -179,9 +179,9 @@
           "type": "MOPUB",
           "placements": [
             {
-              "sequence": 2,
+              "sequence": 1,
               "enabled": true,
-              "format": "native",
+              "format": "video",
               "parameters": [
                 {
                   "name": "adUnitId",
@@ -198,9 +198,9 @@
           "type": "ADMOB",
           "placements": [
             {
-              "sequence": 3,
+              "sequence": 1,
               "enabled": true,
-              "format": "native",
+              "format": "video",
               "parameters": [
                 {
                   "name": "appId",
