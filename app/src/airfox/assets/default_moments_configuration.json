@@ -110,11 +110,6 @@
               "format": "native",
               "parameters": [
                 {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
-                {
                   "name": "adUnitId",
                   "label": "recharge_native_adwall",
                   "value": "recharge_native_adwall"
@@ -211,6 +206,25 @@
                   "name": "adUnitId",
                   "label": "AdMob Ad unit ID",
                   "value": "ca-app-pub-5434727245226926/3090993315"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequence": 3,
+          "name": "AppLovin",
+          "type": "APPLOVIN",
+          "placements": [
+            {
+              "sequence": 3,
+              "enabled": true,
+              "format": "video",
+              "parameters": [
+                {
+                  "name": "adUnitId",
+                  "label": "Placement",
+                  "value": "AirFox_Rewarded_Video"
                 }
               ]
             }
@@ -883,11 +897,6 @@
               "enabled": true,
               "format": "native",
               "parameters": [
-                {
-                  "name": "appId",
-                  "label": "Account Id",
-                  "value": "8a809418015656b8ea62c7d1985d00eb"
-                },
                 {
                   "name": "adUnitId",
                   "label": "recharge_native_adwall",
