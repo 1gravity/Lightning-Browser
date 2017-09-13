@@ -7,6 +7,7 @@
 ::1 localhost #IPv6 localhost
 #
 # AD SERVERS START HERE
+# (downloaded from https://hosts-file.net/?s=Download -> https://hosts-file.net/ad_servers.txt)
 #
 127.0.0.1	005.free-counter.co.uk
 127.0.0.1	006.free-adult-counters.x-xtra.com
@@ -17098,6 +17099,7 @@
 127.0.0.1	ads.lfstmedia.com
 127.0.0.1	ads.link4ads.com
 127.0.0.1	ads.linkbucks.com
+127.0.0.1	ads.linkedin.com
 127.0.0.1	ads.linksponsor.com
 127.0.0.1	ads.linktracking.net
 127.0.0.1	ads.linuxjournal.com
@@ -18660,6 +18662,7 @@
 127.0.0.1	adsvr.adknowledge.com
 127.0.0.1	adsvr.adsparc.net
 127.0.0.1	adsvr.taipeilink.net
+127.0.0.1	adswakeup.com
 127.0.0.1	adswap.com
 127.0.0.1	adsweb.tiscali.de
 127.0.0.1	adsweb.tiscali.it
@@ -26372,6 +26375,7 @@
 127.0.0.1	cpm.tz4.com
 127.0.0.1	cpm.wargaming.net
 127.0.0.1	cpm.worldofwarplanes.com
+127.0.0.1	cpm10.com
 127.0.0.1	cpmfun.com
 127.0.0.1	cpmleader.com
 127.0.0.1	cpro.baidu.com
@@ -29987,6 +29991,7 @@
 127.0.0.1	gr2hk6ze.com
 127.0.0.1	gr8.com
 127.0.0.1	gr8nk.voluumtrk.com
+127.0.0.1	grabify.link
 127.0.0.1	grace-hansley.us
 127.0.0.1	graffix.adition.com
 127.0.0.1	grafix.xxxcounter.com
@@ -31733,6 +31738,7 @@
 127.0.0.1	kewlrank.com
 127.0.0.1	keydownload.go2cloud.org
 127.0.0.1	keynotedeviceanywhere.com
+127.0.0.1	keyoptimize.com
 127.0.0.1	keystat.com
 127.0.0.1	keyword.daumdn.com
 127.0.0.1	keyword.netscape.com
@@ -32456,7 +32462,6 @@
 127.0.0.1	logs-01.loggly.com
 127.0.0.1	logs.51cto.com
 127.0.0.1	logs.aiya.com.cn
-127.0.0.1	logs.cafewell.com
 127.0.0.1	logs.dashlane.com
 127.0.0.1	logs.eresmas.com
 127.0.0.1	logs.eternityco.net
@@ -33199,6 +33204,7 @@
 127.0.0.1	metrics.veryfunnyads.com
 127.0.0.1	metrics.wikinvest.com
 127.0.0.1	metrics.zales.com
+127.0.0.1	metricskey.net
 127.0.0.1	metrika.yandex.by
 127.0.0.1	metrika.yandex.com
 127.0.0.1	metrika.yandex.com.tr
@@ -33620,7 +33626,6 @@
 127.0.0.1	mwc.velti.com
 127.0.0.1	mx.adserver.yahoo.com
 127.0.0.1	mx.ero-advertising.com
-127.0.0.1	mx.yandex.ru
 127.0.0.1	mx1.revsci.net
 127.0.0.1	mx3ih.voluumtrk.com
 127.0.0.1	mxmacromedia.112.2o7.net
@@ -37751,6 +37756,7 @@
 127.0.0.1	sshowads.pubmatic.com
 127.0.0.1	sshtunnel.at
 127.0.0.1	ssi.go2cloud.org
+127.0.0.1	ssl-cd.com
 127.0.0.1	ssl-default.2cnt.net
 127.0.0.1	ssl-error.2cnt.net
 127.0.0.1	ssl-g.searchgist.com
@@ -38566,6 +38572,7 @@
 127.0.0.1	t.acxiom-online.com
 127.0.0.1	t.adbuyer.com
 127.0.0.1	t.adonly.com
+127.0.0.1	t.afftrackr.com
 127.0.0.1	t.appsflyer.com
 127.0.0.1	t.atdmt.com
 127.0.0.1	t.bimvid.com
@@ -39955,6 +39962,7 @@
 127.0.0.1	u-on.eu
 127.0.0.1	u-porn.mp1.mobi
 127.0.0.1	u.begun.ru
+127.0.0.1	u.cubeupload.com
 127.0.0.1	u.extreme-dm.com
 127.0.0.1	u.heatmap.it
 127.0.0.1	u.moatads.com
@@ -40587,7 +40595,6 @@
 127.0.0.1	video.oms.eu
 127.0.0.1	video.unrulymedia.com
 127.0.0.1	videoads.theonion.com
-127.0.0.1	videobug.net
 127.0.0.1	videocodezone.us.intellitxt.com
 127.0.0.1	videofun.me
 127.0.0.1	videoplus.vo.llnwd.net
@@ -45699,6 +45706,7 @@
 127.0.0.1	www.cpd8.net
 127.0.0.1	www.cpm-plus.com
 127.0.0.1	www.cpm.biz
+127.0.0.1	www.cpm10.com
 127.0.0.1	www.cpmaffiliation.com
 127.0.0.1	www.cpmfun.com
 127.0.0.1	www.cpmleader.com
@@ -46325,6 +46333,7 @@
 127.0.0.1	www.kerrie-bedoya.us
 127.0.0.1	www.kerrie-felker.us
 127.0.0.1	www.kewlrank.com
+127.0.0.1	www.keyoptimize.com
 127.0.0.1	www.keywordblocks.com
 127.0.0.1	www.keywordmax.com
 127.0.0.1	www.kilopog.com
@@ -46551,6 +46560,7 @@
 127.0.0.1	www.metabesttours.com
 127.0.0.1	www.metacount.com
 127.0.0.1	www.metricology.com
+127.0.0.1	www.metricskey.net
 127.0.0.1	www.mfsuite.com
 127.0.0.1	www.mgcash.com
 127.0.0.1	www.mgcashgate.com
@@ -47097,6 +47107,7 @@
 127.0.0.1	www.srver110.xyz
 127.0.0.1	www.srvpub.com
 127.0.0.1	www.ssangyong.co.il
+127.0.0.1	www.ssl-cd.com
 127.0.0.1	www.stacia-jose.us
 127.0.0.1	www.stacia-ware.us
 127.0.0.1	www.stargamesaffiliate.com
@@ -48023,6 +48034,4 @@
 127.0.0.1	zz.zeroredirect1.com
 127.0.0.1	zzz.clickbank.net
 127.0.0.1	_thums.ero-advertising.com
-127.0.0.1	beap-bc.yahoo.com
-127.0.0.1	ad.apps.fm
-# Hosts: 48017
+# Hosts: 48025

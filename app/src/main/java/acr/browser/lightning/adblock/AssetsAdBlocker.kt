@@ -6,6 +6,7 @@ import android.util.Log
 import com.anthonycr.bonsai.Completable
 import com.anthonycr.bonsai.CompletableAction
 import com.anthonycr.bonsai.Schedulers
+import com.mgensuite.sdk.core.util.Logger
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URI
@@ -40,20 +41,24 @@ internal constructor(private val application: Application) : AdBlocker {
         try {
             domain = getDomainName(url)
         } catch (e: URISyntaxException) {
-            Log.d(TAG, "URL '$url' is invalid", e)
+            if (Logger.debugLogging()) {
+                Log.d(TAG, "URL '$url' is invalid", e)
+            }
             return false
         }
 
         val isAnAd = checkedDomainsList.get(domain)
         if (isAnAd != null) {
-            if (isAnAd) Log.d(TAG, "URL '$url' is an ad")
+            if (isAnAd && Logger.debugLogging()) Log.d(TAG, "URL '$url' is an ad")
             return isAnAd
         }
 
         val isOnBlacklist = blockedDomainsList.contains(domain)
         checkedDomainsList.put(domain, isOnBlacklist)
         if (isOnBlacklist) {
-            Log.d(TAG, "URL '$url' is an ad")
+            if (Logger.debugLogging()) {
+                Log.d(TAG, "URL '$url' is an ad")
+            }
         }
         return isOnBlacklist
     }
@@ -68,7 +73,7 @@ internal constructor(private val application: Application) : AdBlocker {
      * @return a Completable that will load the hosts file into memory.
      */
     private fun loadHostsFile(): Completable {
-        return Completable.create(CompletableAction {
+        return Completable.create({
             val asset = application.assets
             val reader = BufferedReader(InputStreamReader(asset.open(BLOCKED_DOMAINS_LIST_FILE_NAME)))
             val lineBuilder = StringBuilder()
