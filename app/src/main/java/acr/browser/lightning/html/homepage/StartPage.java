@@ -39,27 +39,24 @@ public class StartPage {
 
     @NonNull
     public Single<String> getHomepage() {
-        return Single.create(new SingleAction<String>() {
-            @Override
-            public void onSubscribe(@NonNull SingleSubscriber<String> subscriber) {
+        return Single.create(subscriber -> {
 
-                HomePageBuilder homePageBuilder = new HomePageBuilder(mApp, mSearchEngineProvider);
+            HomePageBuilder homePageBuilder = new HomePageBuilder(mApp, mSearchEngineProvider);
 
-                File homepage = getStartPageFile(mApp);
-                FileWriter hWriter = null;
-                try {
-                    //noinspection IOResourceOpenedButNotSafelyClosed
-                    hWriter = new FileWriter(homepage, false);
-                    hWriter.write(homePageBuilder.buildPage());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    Utils.close(hWriter);
-                }
-
-                subscriber.onItem(Constants.FILE + homepage);
-
+            File homepage = getStartPageFile(mApp);
+            FileWriter hWriter = null;
+            try {
+                //noinspection IOResourceOpenedButNotSafelyClosed
+                hWriter = new FileWriter(homepage, false);
+                hWriter.write(homePageBuilder.buildPage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                Utils.close(hWriter);
             }
+
+            subscriber.onItem(Constants.FILE + homepage);
+
         });
     }
 
