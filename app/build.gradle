@@ -149,7 +149,7 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
 
     // view binding
-    def butterknifeVersion = '8.8.0'
+    def butterknifeVersion = '8.8.1'
     compile "com.jakewharton:butterknife:$butterknifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 

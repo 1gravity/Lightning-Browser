@@ -37,12 +37,12 @@ buildscript {
 }
 
 allprojects {
-    ext.airfox_lib_version = '3.8.0-SNAPSHOT'
+    ext.airfox_lib_version = '3.8.1-SNAPSHOT'
 
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "https://maven.google.com" }
+        google()
 
         // AirFox AWS S3 repository
         maven {

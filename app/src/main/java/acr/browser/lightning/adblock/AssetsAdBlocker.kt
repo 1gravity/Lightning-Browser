@@ -4,7 +4,6 @@ import acr.browser.lightning.utils.StringBuilderUtils
 import android.app.Application
 import android.util.Log
 import com.anthonycr.bonsai.Completable
-import com.anthonycr.bonsai.CompletableAction
 import com.anthonycr.bonsai.Schedulers
 import com.mgensuite.sdk.core.util.Logger
 import java.io.BufferedReader
