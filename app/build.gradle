@@ -106,6 +106,10 @@ android {
         exclude '.readme'
         exclude 'publicsuffixes.gz'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dexcount {
@@ -140,7 +144,7 @@ dependencies {
     compile "com.android.support:support-v4:$support_lib_version"
 
     // html parsing for reading mode
-    compile 'org.jsoup:jsoup:1.10.2'
+    compile 'org.jsoup:jsoup:1.10.3'
 
     // dependency injection
     def daggerVersion = '2.11'

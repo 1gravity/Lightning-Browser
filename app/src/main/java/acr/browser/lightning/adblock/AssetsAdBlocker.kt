@@ -36,9 +36,8 @@ internal constructor(private val application: Application) : AdBlocker {
             return false
         }
 
-        val domain: String
-        try {
-            domain = getDomainName(url)
+        val domain = try {
+            getDomainName(url)
         } catch (e: URISyntaxException) {
             if (Logger.debugLogging()) {
                 Log.d(TAG, "URL '$url' is invalid", e)
@@ -71,28 +70,26 @@ internal constructor(private val application: Application) : AdBlocker {
      *
      * @return a Completable that will load the hosts file into memory.
      */
-    private fun loadHostsFile(): Completable {
-        return Completable.create({
-            val asset = application.assets
-            val reader = BufferedReader(InputStreamReader(asset.open(BLOCKED_DOMAINS_LIST_FILE_NAME)))
-            val lineBuilder = StringBuilder()
-            val time = System.currentTimeMillis()
+    private fun loadHostsFile(): Completable = Completable.create({
+        val asset = application.assets
+        val reader = BufferedReader(InputStreamReader(asset.open(BLOCKED_DOMAINS_LIST_FILE_NAME)))
+        val lineBuilder = StringBuilder()
+        val time = System.currentTimeMillis()
 
-            val domains = ArrayList<String>(1)
+        val domains = ArrayList<String>(1)
 
-            reader.use {
-                it.forEachLine {
-                    lineBuilder.append(it)
+        reader.use {
+            it.forEachLine {
+                lineBuilder.append(it)
 
-                    parseString(lineBuilder, domains)
-                    lineBuilder.setLength(0)
-                }
+                parseString(lineBuilder, domains)
+                lineBuilder.setLength(0)
             }
+        }
 
-            blockedDomainsList.addAll(domains)
-            Log.d(TAG, "Loaded ad list in: ${(System.currentTimeMillis() - time)} ms")
-        })
-    }
+        blockedDomainsList.addAll(domains)
+        Log.d(TAG, "Loaded ad list in: ${(System.currentTimeMillis() - time)} ms")
+    })
 
     companion object {
 
