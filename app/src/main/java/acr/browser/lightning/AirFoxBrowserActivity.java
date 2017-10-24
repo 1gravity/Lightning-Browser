@@ -6,6 +6,7 @@ import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.mgensuite.airfox.browser.AirFoxBrowser;
 import com.mgensuite.airfox.browser.BrowserMoment;
 import com.mgensuite.airfox.browser.ProgressBarAnimation;
 import com.mgensuite.airfoxsdk.AirFoxMainActivity;
+import com.mgensuite.airfoxsdk.util.PrefConstant;
 import com.mgensuite.datalayer.TrackingObserver;
 import com.mgensuite.datalayer.model.topup.TopupInfo;
 import com.mgensuite.datalayer.model.topup.TopupInfoData;
@@ -38,7 +40,7 @@ import butterknife.BindView;
 /**
  * The AirFoxBrowserActivity implements all AirFox specific functions.
  */
-public abstract class AirFoxBrowserActivity extends BrowserActivity implements LifecycleRegistryOwner {
+public abstract class AirFoxBrowserActivity extends BrowserActivity {
 
     private static final String TOKEN_CURRENCY = "AIR";
 
@@ -54,13 +56,12 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
     private Double mBalanceAmount;
     private Double mMinimumRecharge;
 
-    private boolean mLoading;
-
     private TrackingObserver<Resource<Wallet>> mWalletObserver =
             new TrackingObserver<Resource<Wallet>>() {
                 @Override
                 public void onChanged(@Nullable final Resource<Wallet> resource) {
-                    if (resource.getStatus() == Resource.Status.SUCCESS) {
+                    assert resource != null;
+                    if (Resource.Status.SUCCESS == resource.getStatus()) {
                         MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
                         setHasChanged();
                     }
@@ -71,7 +72,8 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
             new TrackingObserver<Resource<TopupInfo>>() {
                 @Override
                 public void onChanged(@Nullable Resource<TopupInfo> resource) {
-                    if (resource.getStatus() == Resource.Status.SUCCESS) {
+                    assert resource != null;
+                    if (Resource.Status.SUCCESS == resource.getStatus()) {
                         MainThreadUtil.post(() -> updateTokenBalance(resource.getData()));
                         setHasChanged();
                     }
@@ -125,6 +127,7 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
         }
     }
 
+    @NonNull
     @Override
     public LifecycleRegistry getLifecycle() {
         return mRegistry;
@@ -139,11 +142,11 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity implements L
         walletViewModel.getWallet().observe(this, mWalletObserver);
 
         TopupViewModel topupViewModel = ViewModelProviders.of(this).get(TopupViewModel.class);
-        String phoneNumber = AirFoxBrowser.getPhoneNumber();
-        topupViewModel.getTopupInfo(phoneNumber).observe(this, mTopupObserver);
+        String mdn = PrefConstant.getOTPPhoneNumber();
+        topupViewModel.getTopupInfo(mdn).observe(this, mTopupObserver);
 
         ActionBar actionBar = getSupportActionBar();
-        View airFoxButton = actionBar.getCustomView().findViewById(R.id.airfox_button);
+        View airFoxButton = actionBar != null ? actionBar.getCustomView().findViewById(R.id.airfox_button) : null;
         if (airFoxButton != null) airFoxButton.setOnClickListener(view -> {
             Intent intent = new Intent(AirFoxBrowserActivity.this,
                     AirFoxMainActivity.class);

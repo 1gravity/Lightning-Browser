@@ -12,7 +12,6 @@ import acr.browser.lightning.BuildConfig;
 public class AirFoxBrowser extends BrowserApp {
 
     private static final String CUSTOMER_UUID = "596e1de7ac";
-    private static AirFoxBuilder sAirFoxBuilder;
 
     @Override
     public void onCreate() {
@@ -21,13 +20,13 @@ public class AirFoxBrowser extends BrowserApp {
         if (AirFoxMobileSdk.isInitialized()) {
             Logger.enableDebugLogging(BuildConfig.DEBUG);
 
-            AirFoxMobileSdk.setEnvironment(BuildConfig.DEBUG ?
+            AirFoxMobileSdk.api().setEnvironment(BuildConfig.DEBUG ?
                     Environment.STAGING :
                     Environment.PRODUCTION);
 
-            sAirFoxBuilder = new AirFoxBuilder(CUSTOMER_UUID);
+            AirFoxBuilder builder = new AirFoxBuilder(CUSTOMER_UUID);
 
-            sAirFoxBuilder
+            builder
                     .setOfferWallEnabled(true)
                     .setAllowRecharge(true)
                     .setEarnTabEnabled(true)
@@ -43,13 +42,9 @@ public class AirFoxBrowser extends BrowserApp {
                     .setMomentsEnabled(true)
                     .setLocalWaterfall(true);
 
-            AirFox airfox = sAirFoxBuilder.build(this, false, true, null);
+            AirFox airfox = builder.build(this, false, true, null);
             BrowserMoment.initialize(airfox);
         }
-    }
-
-    public static String getPhoneNumber() {
-        return sAirFoxBuilder.getMDN();
     }
 
 }
