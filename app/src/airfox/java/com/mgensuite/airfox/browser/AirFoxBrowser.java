@@ -30,7 +30,7 @@ public class AirFoxBrowser extends BrowserApp {
                     .setOfferWallEnabled(true)
                     .setAllowRecharge(true)
                     .setEarnTabEnabled(true)
-                    .setPurchaseTabEnabled(true)
+                    .setPurchaseTabEnabled(false)
                     .setRedeemTabEnabled(true)
                     .setActivityMenuItemEnabled(true)
                     .setLoanTabEnabled(true)
