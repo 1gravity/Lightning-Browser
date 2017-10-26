@@ -19,6 +19,7 @@ import com.mgensuite.airfox.browser.AirFoxBrowser;
 import com.mgensuite.airfox.browser.BrowserMoment;
 import com.mgensuite.airfox.browser.ProgressBarAnimation;
 import com.mgensuite.airfoxsdk.AirFoxMainActivity;
+import com.mgensuite.airfoxsdk.analytics.datahandlers.BrowserDataHandler;
 import com.mgensuite.airfoxsdk.util.PrefConstant;
 import com.mgensuite.datalayer.TrackingObserver;
 import com.mgensuite.datalayer.model.topup.TopupInfo;
@@ -159,6 +160,7 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity {
         super.onPageLoaded(url);
         Logger.i(Logger.LOG_TAG, "onPageLoaded: " + url);
         BrowserMoment.showAd(this);
+        BrowserDataHandler.INSTANCE.pushData(url);
     }
 
     @Override
