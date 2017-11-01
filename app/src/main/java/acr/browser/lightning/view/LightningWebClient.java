@@ -144,7 +144,7 @@ public class LightningWebClient extends WebViewClient {
     public void onPageFinished(@NonNull WebView view, String url) {
         if (mPageLoading && isCurrentUrl(url)) {
             mPageLoading = false;
-            mUIController.onPageLoaded(url);
+            mUIController.onPageLoaded(url, mLightningView.isIncognito());
         }
 
         if (view.isShown()) {

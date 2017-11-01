@@ -31,7 +31,7 @@ interface UIController {
 
     fun updateProgress(n: Int)
 
-    fun onPageLoaded(url: String)
+    fun onPageLoaded(url: String, incognitoMode: Boolean)
 
     fun updateHistory(title: String?, url: String)
 

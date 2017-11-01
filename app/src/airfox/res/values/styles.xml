@@ -12,7 +12,6 @@
         <item name="airfoxBalanceTextSize">@dimen/care_balance_text_size</item>
         <item name="airfoxBalanceTextColor">@android:color/white</item>
         <item name="airfoxBalanceInfoTextSize">@dimen/care_balance_info_text_size</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="airfoxFABBGColor">@color/colorPrimary</item>
         <item name="airfoxContentBGColor">@android:color/white</item>
 
@@ -94,9 +93,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="AirfoxButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textColor">?attr/airfoxBtTxtColor</item>

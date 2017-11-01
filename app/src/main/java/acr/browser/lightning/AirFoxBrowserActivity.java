@@ -156,11 +156,11 @@ public abstract class AirFoxBrowserActivity extends BrowserActivity {
     }
 
     @Override
-    public void onPageLoaded(@NotNull String url) {
+    public void onPageLoaded(@NotNull String url, boolean incognitoMode) {
         super.onPageLoaded(url);
-        Logger.i(Logger.LOG_TAG, "onPageLoaded: " + url);
+        Logger.i(Logger.LOG_TAG, "onPageLoaded: url = " + url + ", incognitoMode = " + incognitoMode);
         BrowserMoment.showAd(this);
-        BrowserDataHandler.INSTANCE.pushData(url);
+        if (! incognitoMode) BrowserDataHandler.INSTANCE.pushData(url);
     }
 
     @Override
